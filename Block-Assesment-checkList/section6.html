@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Reusable Popups</title>
+    <title>Block Assesment CheckList</title>
 </head>
 
 <body class="bg-gray-100 font-sans">
@@ -340,7 +340,13 @@
                     return;
                 }
 
-                alert("Form submitted successfully!");
+                // Check if this is Section 6, then redirect to the next HTML file
+                const currentSectionId = saveNextButton.closest(".section").id;
+                if (currentSectionId === "section6") {
+                    window.location.href = "section7.html"; // Change to the correct file path for Section 7
+                } else {
+                    alert("Form submitted successfully!");
+                }
             });
 
             // Helper function to create checkboxes

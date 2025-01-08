@@ -176,12 +176,22 @@
                 <!-- Add similar sections for other programs here -->
 
                 <div class="flex justify-end mt-6">
-                    <button type="button" id="saveNextButton"
-                        class="bg-blue-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-600 transition duration-300 text-sm">Save
-                        & Next</button>
+                    <button type="submit" id="submitButton"
+                        class="submit bg-green-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-green-600 transition duration-300">
+                        Submit
+                    </button>
                 </div>
             </div>
         </form>
+        <div id="successMessage" class="hidden bg-green-100 border border-green-400 text-green-700 px-6 py-4 rounded-lg shadow-lg text-center">
+            <h2 class="text-2xl font-bold mb-2">Form Submitted Successfully!</h2>
+            <p class="mb-4">Your data has been submitted.</p>
+            </a>
+            <!-- <button onclick="restartForm()" class="mt-4 bg-blue-500 text-white px-6 py-2 rounded-lg shadow-md hover:bg-blue-600 transition duration-300">
+                Fill Another Form
+            </button> -->
+        </div>
+
     </div>
 
     <!-- Modal for selection -->
@@ -279,31 +289,61 @@
                 modalOptions.querySelectorAll("input").forEach(input => input.checked = false);
             });
 
-            saveNextButton.addEventListener("click", function () {
+            // saveNextButton.addEventListener("click", function () {
+            //     const allSections = document.querySelectorAll(".selected-items");
+            //     let isValid = true;
+
+            //     allSections.forEach(section => {
+            //         const errorElement = section.nextElementSibling;
+            //         const inputField = section.querySelector("input[type='hidden']");
+
+            //         if (!inputField.value) {
+            //             isValid = false;
+            //             errorElement.textContent = "Please select at least one option.";
+            //             section.classList.add("border", "border-red-500");
+            //         } else {
+            //             errorElement.textContent = "";
+            //             section.classList.remove("border", "border-red-500");
+            //         }
+            //     });
+
+            //     if (!isValid) {
+            //         alert("Please complete all required fields before proceeding.");
+            //         return;
+            //     }
+
+            //     alert("Form submitted successfully!");
+            // });
+
+            // Submit Button Action
+             submitButton.addEventListener("click", (event) => {
+                event.preventDefault(); // Prevent default form submission
+
                 const allSections = document.querySelectorAll(".selected-items");
                 let isValid = true;
 
                 allSections.forEach(section => {
-                    const errorElement = section.nextElementSibling;
                     const inputField = section.querySelector("input[type='hidden']");
+                    const errorElement = section.nextElementSibling;
 
-                    if (!inputField.value) {
+                    if (!inputField.value.trim()) {
                         isValid = false;
-                        errorElement.textContent = "Please select at least one option.";
                         section.classList.add("border", "border-red-500");
+                        errorElement.textContent = "Please select at least one option.";
                     } else {
-                        errorElement.textContent = "";
                         section.classList.remove("border", "border-red-500");
+                        errorElement.textContent = "";
                     }
                 });
 
-                if (!isValid) {
-                    alert("Please complete all required fields before proceeding.");
-                    return;
+                if (isValid) {
+                    successMessage.classList.remove("hidden"); // Show success message
+                    document.getElementById("dataForm").classList.add("hidden"); // Hide the form
+                } else {
+                    alert("Please complete all required fields before submitting.");
                 }
-
-                alert("Form submitted successfully!");
             });
+
 
             function createCheckboxes(options, previouslySelected) {
                 const optionsList = options.split(",");

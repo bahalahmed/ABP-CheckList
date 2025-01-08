@@ -24,7 +24,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     addEventListenersForTotal("totalHealthFacilities1", ["totalPHC1", "totalCHC1", "totalSubCenter1"]);
-
+    // document.getElementById('saveNextButton').addEventListener('click', () => {
+    //     const currentSection = 'section5'; // Change based on current section
+    //     if (validateFields(currentSection)) {
+    //         window.location.href = 'section6.html'; // Redirect to the next section
+    //     }
+    // }); 
     
 });
 function validateNumberRange(id, min, max) {
@@ -712,15 +717,32 @@ const validations = {
 
 }
 
+// function validateAndNext(section) {
+//     if (validations[`section${section}`]()) {
+//         document.getElementById(`section${section}`).classList.add('hidden');
+//         const nextSection = document.getElementById(`section${section + 1}`);
+//         if (nextSection) {
+//             nextSection.classList.remove('hidden');
+//         }
+//     }
+// }
+
 function validateAndNext(section) {
     if (validations[`section${section}`]()) {
         document.getElementById(`section${section}`).classList.add('hidden');
-        const nextSection = document.getElementById(`section${section + 1}`);
-        if (nextSection) {
-            nextSection.classList.remove('hidden');
+
+        if (section === 5) {
+            // Redirect to the next HTML file for section 6
+            window.location.href = 'section6.html'; // Change this to the actual path of your section 6 HTML file
+        } else {
+            const nextSection = document.getElementById(`section${section + 1}`);
+            if (nextSection) {
+                nextSection.classList.remove('hidden');
+            }
         }
     }
 }
+
 
 
 

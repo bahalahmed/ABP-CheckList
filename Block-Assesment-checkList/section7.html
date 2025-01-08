@@ -904,12 +904,12 @@
 
             // Check if all fields are valid
             if (allValid) {
-                alert("All inputs are valid. Saving data...");
-                // Perform save functionality here
-                console.log("Saving data...");
-            } else {
-                alert("Please correct errors in the form before saving.");
-            }
+            alert("All inputs are valid. Moving to Section 8...");
+            // Redirect to Section 8 or show Section 8
+            window.location.href = "section8.html"; // Replace with the correct file path for Section 8
+        } else {
+            alert("Please correct errors in the form before proceeding.");
+        }
         });
     });
 </script>
