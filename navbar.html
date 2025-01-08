@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Checklist Navbar</title>
+</head>
+
+<body class="bg-gray-100 font-sans">
+    <!-- Navbar -->
+    <nav class="bg-blue-600 text-white">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#" class="text-2xl font-bold hover:text-blue-300">Checklists</a>
+
+            <!-- Links -->
+            <div class="hidden md:flex space-x-6">
+                <a href="checklist1.html" class="hover:text-blue-300 text-lg">Checklist 1</a>
+                <a href="checklist2.html" class="hover:text-blue-300 text-lg">Checklist 2</a>
+                <a href="checklist3.html" class="hover:text-blue-300 text-lg">Checklist 3</a>
+                <a href="checklist4.html" class="hover:text-blue-300 text-lg">Checklist 4</a>
+            </div>
+
+            <!-- Hamburger Menu -->
+            <div class="md:hidden">
+                <button id="menuToggle" class="focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" viewBox="0 0 24 24">
+                        <path d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-blue-700">
+            <a href="Block-Assesment-checkList/index.html" class="block px-4 py-2 hover:bg-blue-500 text-white">Checklist 1</a>
+            <a href="Facility-Checklist/index.html" class="block px-4 py-2 hover:bg-blue-500 text-white">Checklist 2</a>
+            <a href="Heallth-Welness-CheckList/index.html" class="block px-4 py-2 hover:bg-blue-500 text-white">Checklist 3</a>
+            <a href="Community-Checklist/index.html" class="block px-4 py-2 hover:bg-blue-500 text-white">Checklist 4</a>
+            
+            
+        </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container mx-auto mt-8 px-4">
+        <h1 class="text-3xl font-bold text-gray-800 mb-6">Welcome to the ABP CheckList</h1>
+        <p class="text-gray-600 text-lg">Use the navigation bar to access the different checklists:</p>
+
+        <!-- Links with Description -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                <h2 class="text-xl font-semibold text-blue-600 mb-2">Block-Assesment-CheckList</h2>
+                <p class="text-gray-600">General Information,Block Preparedness,Health Governance & Finance,Health Care Infrastructure,Human Resource for Health,Capacity Building,Percentage of ANC registered within the first trimester
+                    against total ANC registrations. (Source : HMIS),Key Programmatic Issues.</p>
+                <a href="Block-Assesment-checkList/index.html" class="mt-4 inline-block text-blue-600 hover:text-blue-800 font-semibold">Go to Checklist 1 &rarr;</a>
+            </div>
+
+
+            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                <h2 class="text-xl font-semibold text-blue-600 mb-2">Facility-Checklist</h2>
+                <p class="text-gray-600">General Information,ASHA Details,Essential Supplies Checklist,Interaction Summary,Key Programmatic Issues</p>
+                <a href="Community-Checklist/index.html" class="mt-4 inline-block text-blue-600 hover:text-blue-800 font-semibold">Go to Checklist 2 &rarr;</a>
+            </div>
+           
+
+            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                <h2 class="text-xl font-semibold text-blue-600 mb-2">Heallth-Welness-CheckList</h2>
+                <p class="text-gray-600">General Information,Infrastructure,Medical Officers,Service Delivery,Medicines,Diagnostics,Documentation and Supplies, Key Programmatic Issues</p>
+                <a href="Heallth-Welness-CheckList/index.html" class="mt-4 inline-block text-blue-600 hover:text-blue-800 font-semibold">Go to Checklist 3 &rarr;</a>
+            </div>
+
+            
+
+            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                <h2 class="text-xl font-semibold text-blue-600 mb-2">Community-Checklist</h2>
+                <p class="text-gray-600">General Information,Infrastructure,Medical Officers,Service Delivery Section,Medicines,Diagnostics,Documentation and supplies,Knowledge and Practice</p>
+                <a href="Facility-Checklist/index.html" class="mt-4 inline-block text-blue-600 hover:text-blue-800 font-semibold">Go to Checklist 4 &rarr;</a>
+            </div>
+
+
+
+           
+        </div>
+    </div>
+
+    <script>
+        const menuToggle = document.getElementById("menuToggle");
+        const mobileMenu = document.getElementById("mobileMenu");
+
+        menuToggle.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+        });
+    </script>
+</body>
+
+</html>

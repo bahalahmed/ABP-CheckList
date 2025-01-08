@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Reusable Popups</title>
+</head>
+
+<body class="bg-gray-100 font-sans">
+    <div class="container mx-auto p-4">
+        <form id="dataForm">
+            <!-- Header Section -->
+            <div id="section6" class="section bg-white p-6 rounded shadow-md mb-4">
+                <h2 class="text-3xl font-bold mb-6 text-black-600">Capacity Building</h2>
+                <p class="text-sm text-red-500 mb-4">* indicates a required question</p>
+
+                <!-- Medical Officer Section -->
+                <div id="MedicalOfficer-section" class="bg-white p-6 rounded-lg shadow-md mt-4">
+                    <h2 class="text-2xl font-semibold text-blue-600 mb-4">Medical Officer</h2>
+
+                    <!-- RMNCH Section for Medical Officer -->
+                    <div id="MedicalOfficer-RMNCH-section" class="mb-4">
+                        <div class="flex justify-between items-center">
+                            <div class="text-gray-700 text-lg font-semibold">RMNCH</div>
+                            <button type="button" class="select-btn bg-blue-500 text-white px-4 py-2 rounded-lg"
+                                data-title="RMNCH Capacity Building (Medical Officer)"
+                                data-options="LaQshya,MusQan,BEmONC,CEmONC,Maternal Death Surveillance & Review,Child Death Review,Facility based-IMNCI"
+                                data-target="MedicalOfficer-RMNCH-selected-items">
+                                Select
+                            </button>
+                        </div>
+                        <div id="MedicalOfficer-RMNCH-selected-items" class="selected-items flex mt-2 flex-wrap gap-2">
+                            <input type="hidden" name="MedicalOfficer-RMNCH" id="MedicalOfficer-RMNCH" value="">
+                        </div>
+                        <p id="error-MedicalOfficer-RMNCH" class="text-red-500 text-sm mt-1"></p>
+                    </div>
+
+                    <!-- Other Trainings Section for Medical Officer -->
+                    <div id="MedicalOfficer-OtherTrainings-section" class="mb-4">
+                        <div class="flex justify-between items-center">
+                            <div class="text-gray-700 text-lg font-semibold">Other Trainings</div>
+                            <button type="button" class="select-btn bg-blue-500 text-white px-4 py-2 rounded-lg"
+                                data-title="Other Trainings Capacity Building (Medical Officer)"
+                                data-options="National Emergency Life Support,Jan Aarogya Samiti,Rogi Kalyan Samiti,Integrated Health Information Platform,HMIS,NP-NCD,IT portals"
+                                data-target="MedicalOfficer-OtherTrainings-selected-items">
+                                Select
+                            </button>
+                        </div>
+                        <div id="MedicalOfficer-OtherTrainings-selected-items"
+                            class="selected-items flex mt-2 flex-wrap gap-2">
+                            <input type="hidden" name="MedicalOfficer-OtherTrainings" id="MedicalOfficer-OtherTrainings"
+                                value="">
+                        </div>
+                        <p id="error-MedicalOfficer-OtherTrainings" class="text-red-500 text-sm mt-1"></p>
+                    </div>
+                </div>
+
+
+                <!-- CHO Section -->
+                <div id="CHO-section" class="bg-white p-6 rounded-lg shadow-md mt-4">
+                    <h2 class="text-2xl font-semibold text-blue-600 mb-4">CHO (Community Health Officers)</h2>
+
+                    <!-- RMNCH Section -->
+                    <div id="CHO-RMNCH-section" class="mb-4">
+                        <div class="flex justify-between items-center">
+                            <div class="text-gray-700 text-lg font-semibold">RMNCH</div>
+                            <button type="button" class="select-btn bg-blue-500 text-white px-4 py-2 rounded-lg"
+                                data-title="RMNCH Capacity Building"
+                                data-options="LaQshya,MusQan,BEmONC,CEmONC,Maternal Death Surveillance & Review,Child Death Review,Facility based-IMNCI"
+                                data-target="CHO-RMNCH-selected-items">
+                                Select
+                            </button>
+                        </div>
+                        <div id="CHO-RMNCH-selected-items" class="selected-items flex mt-2 flex-wrap gap-2">
+                            <input type="hidden" name="CHO-RMNCH" id="CHO-RMNCH" value="">
+                        </div>
+                        <p id="error-CHO-RMNCH" class="text-red-500 text-sm mt-1"></p>
+                    </div>
+
+                    <!-- NCD Section -->
+                    <div id="CHO-NCD-section">
+                        <div class="flex justify-between items-center">
+                            <div class="text-gray-700 text-lg font-semibold">NCD</div>
+                            <button type="button" class="select-btn bg-blue-500 text-white px-4 py-2 rounded-lg"
+                                data-title="NCD Capacity Building"
+                                data-options="Extended service package of Comprehensive Primary Health Care,NP-NCD"
+                                data-target="CHO-NCD-selected-items">
+                                Select
+                            </button>
+                        </div>
+                        <div id="CHO-NCD-selected-items" class="selected-items flex mt-2 flex-wrap gap-2">
+                            <input type="hidden" name="CHO-NCD" id="CHO-NCD" value="">
+                        </div>
+                        <p id="error-CHO-NCD" class="text-red-500 text-sm mt-1"></p>
+                    </div>
+                </div>
+
+
+                <!-- Staff Nurse Section -->
+                <div id="StaffNurse-section" class="bg-white p-6 rounded-lg shadow-md mt-4">
+                    <h2 class="text-2xl font-semibold text-blue-600 mb-4">Staff Nurse</h2>
+
+                    <!-- RMNCH Section for Staff Nurse -->
+                    <div id="StaffNurse-RMNCH-section" class="mb-4">
+                        <div class="flex justify-between items-center">
+                            <div class="text-gray-700 text-lg font-semibold">RMNCH</div>
+                            <button type="button" class="select-btn bg-blue-500 text-white px-4 py-2 rounded-lg"
+                                data-title="RMNCH Capacity Building (Staff Nurse)"
+                                data-options="LaQshya,MusQan,BEmONC,CEmONC,Maternal Death Surveillance & Review,Child Death Review,Facility based-IMNCI"
+                                data-target="StaffNurse-RMNCH-selected-items">
+                                Select
+                            </button>
+                        </div>
+                        <div id="StaffNurse-RMNCH-selected-items" class="selected-items flex mt-2 flex-wrap gap-2">
+                            <input type="hidden" name="StaffNurse-RMNCH" id="StaffNurse-RMNCH" value="">
+                        </div>
+                        <p id="error-StaffNurse-RMNCH" class="text-red-500 text-sm mt-1"></p>
+                    </div>
+                </div>
+
+
+                <!-- ANM Section -->
+                <div id="ANM-section" class="bg-white p-6 rounded-lg shadow-md mt-4">
+                    <h2 class="text-2xl font-semibold text-blue-600 mb-4">ANM (Auxiliary Nurse Midwife)</h2>
+
+                    <!-- RMNCH Section for ANM -->
+                    <div id="ANM-RMNCH-section" class="mb-4">
+                        <div class="flex justify-between items-center">
+                            <div class="text-gray-700 text-lg font-semibold">RMNCH</div>
+                            <button type="button" class="select-btn bg-blue-500 text-white px-4 py-2 rounded-lg"
+                                data-title="RMNCH Capacity Building (ANM)"
+                                data-options="LaQshya,MusQan,BEmONC,CEmONC,Maternal Death Surveillance & Review,Child Death Review,Facility based-IMNCI"
+                                data-target="ANM-RMNCH-selected-items">
+                                Select
+                            </button>
+                        </div>
+                        <div id="ANM-RMNCH-selected-items" class="selected-items flex mt-2 flex-wrap gap-2">
+                            <input type="hidden" name="ANM-RMNCH" id="ANM-RMNCH" value="">
+                        </div>
+                        <p id="error-ANM-RMNCH" class="text-red-500 text-sm mt-1"></p>
+                    </div>
+
+                    <!-- Communicable Diseases Section for ANM -->
+                    <div id="ANM-CD-section" class="mb-4">
+                        <div class="flex justify-between items-center">
+                            <div class="text-gray-700 text-lg font-semibold">Communicable Diseases</div>
+                            <button type="button" class="select-btn bg-blue-500 text-white px-4 py-2 rounded-lg"
+                                data-title="Communicable Diseases Capacity Building (ANM)"
+                                data-options="NVBDCP,NTEP,IDSP,NLEP" data-target="ANM-CD-selected-items">
+                                Select
+                            </button>
+                        </div>
+                        <div id="ANM-CD-selected-items" class="selected-items flex mt-2 flex-wrap gap-2">
+                            <input type="hidden" name="ANM-CD" id="ANM-CD" value="">
+                        </div>
+                        <p id="error-ANM-CD" class="text-red-500 text-sm mt-1"></p>
+                    </div>
+                </div>
+
+
+                <!-- ASHA Section -->
+                <div id="ASHA-section" class="bg-white p-6 rounded-lg shadow-md mt-4">
+                    <h2 class="text-2xl font-semibold text-blue-600 mb-4">ASHA (Accredited Social Health Activist)</h2>
+
+                    <!-- RMNCH Section for ASHA -->
+                    <div id="ASHA-RMNCH-section" class="mb-4">
+                        <div class="flex justify-between items-center">
+                            <div class="text-gray-700 text-lg font-semibold">RMNCH</div>
+                            <button type="button" class="select-btn bg-blue-500 text-white px-4 py-2 rounded-lg"
+                                data-title="RMNCH Capacity Building (ASHA)"
+                                data-options="LaQshya,MusQan,BEmONC,CEmONC,Maternal Death Surveillance & Review,Child Death Review,Facility based-IMNCI"
+                                data-target="ASHA-RMNCH-selected-items">
+                                Select
+                            </button>
+                        </div>
+                        <div id="ASHA-RMNCH-selected-items" class="selected-items flex mt-2 flex-wrap gap-2">
+                            <input type="hidden" name="ASHA-RMNCH" id="ASHA-RMNCH" value="">
+                        </div>
+                        <p id="error-ASHA-RMNCH" class="text-red-500 text-sm mt-1"></p>
+                    </div>
+
+                    <!-- Communicable Diseases Section for ASHA -->
+                    <div id="ASHA-CD-section" class="mb-4">
+                        <div class="flex justify-between items-center">
+                            <div class="text-gray-700 text-lg font-semibold">Communicable Diseases</div>
+                            <button type="button" class="select-btn bg-blue-500 text-white px-4 py-2 rounded-lg"
+                                data-title="Communicable Diseases Capacity Building (ASHA)"
+                                data-options="NVBDCP,NTEP,IDSP,NLEP" data-target="ASHA-CD-selected-items">
+                                Select
+                            </button>
+                        </div>
+                        <div id="ASHA-CD-selected-items" class="selected-items flex mt-2 flex-wrap gap-2">
+                            <input type="hidden" name="ASHA-CD" id="ASHA-CD" value="">
+                        </div>
+                        <p id="error-ASHA-CD" class="text-red-500 text-sm mt-1"></p>
+                    </div>
+
+                    <!-- Other Trainings Section for ASHA -->
+                    <div id="ASHA-OtherTrainings-section" class="mb-4">
+                        <div class="flex justify-between items-center">
+                            <div class="text-gray-700 text-lg font-semibold">Other Trainings</div>
+                            <button type="button" class="select-btn bg-blue-500 text-white px-4 py-2 rounded-lg"
+                                data-title="Other Trainings Capacity Building (ASHA)"
+                                data-options="National Emergency Life Support,Jan Aarogya Samiti,Rogi Kalyan Samiti,Integrated Health Information Platform,HMIS,NP-NCD,IT portals"
+                                data-target="ASHA-OtherTrainings-selected-items">
+                                Select
+                            </button>
+                        </div>
+                        <div id="ASHA-OtherTrainings-selected-items" class="selected-items flex mt-2 flex-wrap gap-2">
+                            <input type="hidden" name="ASHA-OtherTrainings" id="ASHA-OtherTrainings" value="">
+                        </div>
+                        <p id="error-ASHA-OtherTrainings" class="text-red-500 text-sm mt-1"></p>
+                    </div>
+                </div>
+
+                <div class="flex justify-end mt-6">
+                    <button type="button" id="saveNextButtonSection6"
+                        class="bg-blue-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-600 transition duration-300">Save
+                        & Next</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Modal for selection -->
+    <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex justify-center items-center">
+        <div class="bg-white p-6 rounded-lg w-96">
+            <h3 id="modalTitle" class="text-xl font-semibold mb-4"></h3>
+            <div id="modalOptions" class="flex flex-col gap-3"></div>
+            <div class="flex justify-between mt-4">
+                <button id="resetBtn" class="bg-gray-500 text-white py-2 px-4 rounded-lg">Reset</button>
+                <button id="saveBtn" class="bg-blue-500 text-white py-2 px-4 rounded-lg">Save</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const saveNextButton = document.getElementById("saveNextButtonSection6");
+            const selectBtns = document.querySelectorAll(".select-btn");
+            const modal = document.getElementById("modal");
+            const modalTitle = document.getElementById("modalTitle");
+            const modalOptions = document.getElementById("modalOptions");
+            const saveBtn = document.getElementById("saveBtn");
+            const resetBtn = document.getElementById("resetBtn");
+            let currentSelectedContainer = null;
+            let currentHiddenInput = null;
+            const selectedItemsStore = {};
+
+            // Open Modal
+            selectBtns.forEach(button => {
+                button.addEventListener("click", function () {
+                    const title = this.getAttribute("data-title");
+                    const options = this.getAttribute("data-options");
+                    currentSelectedContainer = this.closest(".section").querySelector(`#${this.getAttribute("data-target")}`);
+                    currentHiddenInput = currentSelectedContainer.querySelector("input[type='hidden']");
+                    const previouslySelected = selectedItemsStore[title] || [];
+
+                    modalTitle.textContent = title;
+                    modalOptions.innerHTML = createCheckboxes(options, previouslySelected);
+
+                    // Attach event listeners to dynamically update errors when a checkbox is selected
+                    modalOptions.querySelectorAll("input[type='checkbox']").forEach(checkbox => {
+                        checkbox.addEventListener("change", function () {
+                            const errorElement = currentSelectedContainer.parentElement.querySelector(
+                                `#error-${currentHiddenInput.id}`
+                            );
+                            if (Array.from(modalOptions.querySelectorAll("input:checked")).length > 0) {
+                                errorElement.textContent = ""; // Remove error message
+                                currentSelectedContainer.classList.remove("border", "border-red-500");
+                            }
+                        });
+                    });
+
+                    modal.classList.remove("hidden");
+                });
+            });
+
+            // Save Button in Modal
+            saveBtn.addEventListener("click", function () {
+                const selectedCheckboxes = Array.from(modalOptions.querySelectorAll("input:checked"));
+                const selectedValues = selectedCheckboxes.map(checkbox => checkbox.value);
+
+                if (selectedValues.length === 0) {
+                    alert("Please select at least one option.");
+                    return;
+                }
+
+                if (currentHiddenInput) {
+                    currentHiddenInput.value = selectedValues.join(",");
+                }
+
+                selectedItemsStore[modalTitle.textContent] = selectedValues;
+
+                currentSelectedContainer.innerHTML = selectedValues.map(item => `
+            <span class="px-2 py-1 bg-gray-300 rounded">
+                ${item} <span class="cursor-pointer" onclick="removeItem(this)">×</span>
+            </span>`).join("");
+
+                currentSelectedContainer.appendChild(currentHiddenInput);
+
+                // Clear the error dynamically
+                const errorElement = currentSelectedContainer.parentElement.querySelector(`#error-${currentHiddenInput.id}`);
+                if (errorElement) {
+                    errorElement.textContent = "";
+                    currentSelectedContainer.classList.remove("border", "border-red-500");
+                }
+
+                modal.classList.add("hidden");
+            });
+
+            // Save & Next Button Action
+            saveNextButton.addEventListener("click", function () {
+                const allSections = document.querySelectorAll(".section");
+                let isValid = true;
+
+                allSections.forEach(section => {
+                    const selectedItemsContainers = section.querySelectorAll(".selected-items");
+                    selectedItemsContainers.forEach(container => {
+                        const hiddenInput = container.querySelector("input[type='hidden']");
+                        const errorElement = section.querySelector(`#error-${hiddenInput.id}`);
+
+                        if (!hiddenInput.value.trim()) {
+                            isValid = false;
+                            container.classList.add("border", "border-red-500");
+                            errorElement.textContent = "Please select at least one option.";
+                        } else {
+                            container.classList.remove("border", "border-red-500");
+                            errorElement.textContent = "";
+                        }
+                    });
+                });
+
+                if (!isValid) {
+                    alert("Please complete all required fields.");
+                    return;
+                }
+
+                alert("Form submitted successfully!");
+            });
+
+            // Helper function to create checkboxes
+            function createCheckboxes(options, previouslySelected) {
+                const optionsList = options.split(",");
+                return optionsList.map(option => {
+                    const checked = previouslySelected.includes(option.trim()) ? "checked" : "";
+                    return `
+                <label class="flex items-center">
+                    <input type="checkbox" value="${option.trim()}" ${checked} class="mr-2">
+                    ${option.trim()}
+                </label>`;
+                }).join("");
+            }
+            // Reset Button in Modal
+            resetBtn.addEventListener("click", function () {
+                // Uncheck all checkboxes inside the modal
+                modalOptions.querySelectorAll("input[type='checkbox']").forEach(input => input.checked = false);
+
+                // Clear the selection in the state for the current section
+                if (modalTitle.textContent) {
+                    selectedItemsStore[modalTitle.textContent] = [];
+                }
+
+                // Clear the current selected items container
+                if (currentSelectedContainer) {
+                    currentSelectedContainer.innerHTML = "";
+                    currentHiddenInput.value = ""; // Reset hidden input value
+                }
+            });
+
+
+            // Remove Selected Item
+            window.removeItem = function (item) {
+                const span = item.parentElement;
+                const container = span.parentElement;
+                const sectionTitle = container.closest(".section").querySelector("button.select-btn").getAttribute("data-title");
+                const valueToRemove = span.textContent.trim().replace("×", "").trim();
+
+                if (selectedItemsStore[sectionTitle]) {
+                    selectedItemsStore[sectionTitle] = selectedItemsStore[sectionTitle].filter(value => value !== valueToRemove);
+                }
+
+                const hiddenInput = container.querySelector("input[type='hidden']");
+                hiddenInput.value = selectedItemsStore[sectionTitle]?.join(",") || "";
+
+                const errorElement = container.parentElement.querySelector(`#error-${hiddenInput.id}`);
+                if (!hiddenInput.value.trim() && errorElement) {
+                    errorElement.textContent = "Please select at least one option.";
+                    container.classList.add("border", "border-red-500");
+                }
+
+                span.remove();
+            };
+        });
+
+
+
+    </script>
+</body>
+
+</html>

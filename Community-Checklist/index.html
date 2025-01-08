@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Checklist Form</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uuid@9.0.0/dist/uuidv4.min.js"></script>
+
+</head>
+
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div class="container mx-auto p-4">
+        <!-- Flash Message -->
+        <div id="flashMessage" class="hidden bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg shadow-lg text-center">
+            <h2 class="text-lg font-bold mb-2">Session Expired</h2>
+            <p>Your session has expired. Please start again.</p>
+        </div>
+
+        <form id="communityCheckList">
+            <!-- Section 1: General Information -->
+            <div id="section1" class="section bg-white p-6 rounded-lg shadow-md mb-4 " data-section="1">
+                <div class="mb-6">
+                    <h2 class="text-3xl font-bold mb-6 text-black-600">General Information</h2>
+                    <p class="text-sm text-red-500 mb-4">* indicates a required question</p>
+
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h2 class="text-2xl font-bold mb-6 text-blue-600">General Details</h2>
+
+                        <!-- Date of Visit -->
+                        <div class="mb-6 bg-white p-6 rounded-lg shadow-md">
+                            <label for="dateOfVisit" class="block text-gray-700 text-lg font-semibold">Date of Visit
+                                <span class="text-red-500">*</span></label>
+                            <input type="date" id="dateOfVisit"
+                                class="form-input mt-2 block w-full p-3 border border-gray-300 rounded-md"
+                                name="dateOfVisit" required>
+                            <p id="error-dateOfVisit" class="text-red-500 text-sm"></p>
+                        </div>
+
+                        <!-- District -->
+                        <div class="mb-6 bg-white p-6 rounded-lg shadow-md">
+                            <label for="district" class="block text-gray-700 text-lg font-semibold">District <span
+                                    class="text-red-500">*</span></label>
+                            <select id="district"
+                                class="form-select mt-2 block w-full p-3 border border-gray-300 rounded-md"
+                                name="district" required>
+                                <option value="" disabled selected>Select District</option>
+                                <option value="District 1">District 1</option>
+                                <option value="District 2">District 2</option>
+                                <option value="District 3">District 3</option>
+                            </select>
+                            <p id="error-district" class="text-red-500 text-sm"></p>
+                        </div>
+
+                        <!-- Block -->
+                        <div class="mb-6 bg-white p-6 rounded-lg shadow-md">
+                            <label for="block" class="block text-gray-700 text-lg font-semibold">Block <span
+                                    class="text-red-500">*</span></label>
+                            <select id="block"
+                                class="form-select mt-2 block w-full p-3 border border-gray-300 rounded-md" name="block"
+                                required>
+                                <option value="" disabled selected>Select Block</option>
+                                <option value="Block 1">Block 1</option>
+                                <option value="Block 2">Block 2</option>
+                                <option value="Block 3">Block 3</option>
+                            </select>
+                            <p id="error-block" class="text-red-500 text-sm"></p>
+                        </div>
+
+                        <!-- Name of Village/Ward -->
+                        <div class="mb-6 bg-white p-6 rounded-lg shadow-md">
+                            <label for="villageWard" class="block text-gray-700 text-lg font-semibold">Name of the
+                                Village/Ward (in urban areas) <span class="text-red-500">*</span></label>
+                            <select id="villageWard"
+                                class="form-select mt-2 block w-full p-3 border border-gray-300 rounded-md"
+                                name="villageWard" required>
+                                <option value="" disabled selected>Select Village/Ward</option>
+                                <option value="Village 1">Village 1</option>
+                                <option value="Village 2">Village 2</option>
+                                <option value="Ward 1">Ward 1</option>
+                            </select>
+                            <p id="error-villageWard" class="text-red-500 text-sm"></p>
+                        </div>
+
+                        <!-- VHND Session -->
+                        <div class="mb-6 bg-white p-6 rounded-lg shadow-md">
+                            <label for="vhndSession" class="block text-gray-700 text-lg font-semibold">Is VHND Session
+                                going on at the time of visit? <span class="text-red-500">*</span></label>
+                            <select id="vhndSession"
+                                class="form-select mt-2 block w-full p-3 border border-gray-300 rounded-md"
+                                name="vhndSession" required>
+                                <option value="" disabled selected>Select an option</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                            <p id="error-vhndSession" class="text-red-500 text-sm"></p>
+                        </div>
+                        <!-- VHND Section (hidden by default) -->
+                        <div id="vhndSection" class="hidden bg-white-50 p-6 rounded-lg shadow-md">
+                            <h3 class="text-xl font-bold text-blue-500 mb-4">VHND Session Details</h3>
+
+                            <!-- Repeatable Fields -->
+                            <div class="mb-6">
+                                <label for="dueList" class="block text-gray-700 text-lg font-semibold">Due list for RI
+                                    ANC, PNC available with ASHA/ANM? <span class="text-red-500">*</span></label>
+                                <select id="dueList"
+                                    class="form-select mt-2 block w-full p-3 border border-gray-300 rounded-md"
+                                    name="dueList" required>
+                                    <option value="" disabled selected>Select an option</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                                <p id="error-dueList" class="text-red-500 text-sm"></p>
+                            </div>
+
+                            <!-- Additional Fields -->
+                            <div class="mb-6">
+                                <label for="riMicroPlan" class="block text-gray-700 text-lg font-semibold">RI Microplan
+                                    available? <span class="text-red-500">*</span></label>
+                                <select id="riMicroPlan"
+                                    class="form-select mt-2 block w-full p-3 border border-gray-300 rounded-md"
+                                    name="riMicroPlan" required>
+                                    <option value="" disabled selected>Select an option</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                                <p id="error-riMicroPlan" class="text-red-500 text-sm"></p>
+                            </div>
+
+                            <!-- BP Instrument -->
+                            <div class="mb-6">
+                                <label for="bpInstrument" class="block text-gray-700 text-lg font-semibold">BP
+                                    Instrument <span class="text-red-500">*</span></label>
+                                <select id="bpInstrument"
+                                    class="form-select mt-2 block w-full p-3 border border-gray-300 rounded-md"
+                                    name="bpInstrument" required>
+                                    <option value="" disabled selected>Select an option</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                                <p id="error-bpInstrument" class="text-red-500 text-sm"></p>
+                            </div>
+
+                            <!-- Stethoscope -->
+                            <div class="mb-6">
+                                <label for="stethoscope" class="block text-gray-700 text-lg font-semibold">Stethoscope
+                                    <span class="text-red-500">*</span></label>
+                                <select id="stethoscope"
+                                    class="form-select mt-2 block w-full p-3 border border-gray-300 rounded-md"
+                                    name="stethoscope" required>
+                                    <option value="" disabled selected>Select an option</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                                <p id="error-stethoscope" class="text-red-500 text-sm"></p>
+                            </div>
+
+                            <div class="mb-6">
+                                <label for="albendazole" class="block text-gray-700 text-lg font-semibold">Tab.
+                                    Albendazole <span class="text-red-500">*</span></label>
+                                <select id="albendazole"
+                                    class="form-select mt-2 block w-full p-3 border border-gray-300 rounded-md"
+                                    name="albendazole" required>
+                                    <option value="" disabled selected>Select an option</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                                <p id="error-albendazole" class="text-red-500 text-sm"></p>
+                            </div>
+
+                            <!-- Family Planning Services -->
+                            <div class="mb-6">
+                                <label for="familyPlanning" class="block text-gray-700 text-lg font-semibold">Family
+                                    planning services and counselling provided <span
+                                        class="text-red-500">*</span></label>
+                                <select id="familyPlanning"
+                                    class="form-select mt-2 block w-full p-3 border border-gray-300 rounded-md"
+                                    name="familyPlanning" required>
+                                    <option value="" disabled selected>Select an option</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                                <p id="error-familyPlanning" class="text-red-500 text-sm"></p>
+                            </div>
+                            <!-- RI provided -->
+                            <div class="mb-6">
+                                <label for="riProvided" class="block text-gray-700 text-lg font-semibold">RI provided
+                                    <span class="text-red-500">*</span></label>
+                                <select id="riProvided"
+                                    class="form-select mt-2 block w-full p-3 border border-gray-300 rounded-md"
+                                    name="riProvided" required>
+                                    <option value="" disabled selected>Select an option</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                                <p id="error-riProvided" class="text-red-500 text-sm"></p>
+                            </div>
+
+                            <!-- Functional weighing scale available -->
+                            <div class="mb-6">
+                                <label for="weighingScale" class="block text-gray-700 text-lg font-semibold">Functional
+                                    weighing scale available at site <span class="text-red-500">*</span></label>
+                                <select id="weighingScale"
+                                    class="form-select mt-2 block w-full p-3 border border-gray-300 rounded-md"
+                                    name="weighingScale" required>
+                                    <option value="" disabled selected>Select an option</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                                <p id="error-weighingScale" class="text-red-500 text-sm"></p>
+                            </div>
+
+                            <!-- Vitamin A Syrup available -->
+                            <div class="mb-6">
+                                <label for="vitaminASyrup" class="block text-gray-700 text-lg font-semibold">Vitamin A
+                                    Syrup available <span class="text-red-500">*</span></label>
+                                <select id="vitaminASyrup"
+                                    class="form-select mt-2 block w-full p-3 border border-gray-300 rounded-md"
+                                    name="vitaminASyrup" required>
+                                    <option value="" disabled selected>Select an option</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                                <p id="error-vitaminASyrup" class="text-red-500 text-sm"></p>
+                            </div>
+
+                            <!-- ANC provided -->
+                            <div class="mb-6">
+                                <label for="ancProvided" class="block text-gray-700 text-lg font-semibold">ANC provided
+                                    <span class="text-red-500">*</span></label>
+                                <select id="ancProvided"
+                                    class="form-select mt-2 block w-full p-3 border border-gray-300 rounded-md"
+                                    name="ancProvided" required>
+                                    <option value="" disabled selected>Select an option</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                                <p id="error-ancProvided" class="text-red-500 text-sm"></p>
+                            </div>
+
+                            <!-- Growth Monitoring -->
+                            <div class="mb-6">
+                                <label for="growthMonitoring" class="block text-gray-700 text-lg font-semibold">Growth
+                                    Monitoring of children done <span class="text-red-500">*</span></label>
+                                <select id="growthMonitoring"
+                                    class="form-select mt-2 block w-full p-3 border border-gray-300 rounded-md"
+                                    name="growthMonitoring" required>
+                                    <option value="" disabled selected>Select an option</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                                <p id="error-growthMonitoring" class="text-red-500 text-sm"></p>
+                            </div>
+
+                            <!-- Hemoglobinometer -->
+                            <div class="mb-6">
+                                <label for="hemoglobinometer"
+                                    class="block text-gray-700 text-lg font-semibold">Hemoglobinometer <span
+                                        class="text-red-500">*</span></label>
+                                <select id="hemoglobinometer"
+                                    class="form-select mt-2 block w-full p-3 border border-gray-300 rounded-md"
+                                    name="hemoglobinometer" required>
+                                    <option value="" disabled selected>Select an option</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                                <p id="error-hemoglobinometer" class="text-red-500 text-sm"></p>
+                            </div>
+
+                            <!-- IFA Tablets -->
+                            <div class="mb-6">
+                                <label for="ifaTablets" class="block text-gray-700 text-lg font-semibold">IFA Tablets
+                                    <span class="text-red-500">*</span></label>
+                                <select id="ifaTablets"
+                                    class="form-select mt-2 block w-full p-3 border border-gray-300 rounded-md"
+                                    name="ifaTablets" required>
+                                    <option value="" disabled selected>Select an option</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                                <p id="error-ifaTablets" class="text-red-500 text-sm"></p>
+                            </div>
+
+                            <!-- Calcium Tablets -->
+                            <div class="mb-6">
+                                <label for="calciumTablets" class="block text-gray-700 text-lg font-semibold">Calcium
+                                    Tablets <span class="text-red-500">*</span></label>
+                                <select id="calciumTablets"
+                                    class="form-select mt-2 block w-full p-3 border border-gray-300 rounded-md"
+                                    name="calciumTablets" required>
+                                    <option value="" disabled selected>Select an option</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                                <p id="error-calciumTablets" class="text-red-500 text-sm"></p>
+                            </div>
+
+                            <!-- PNC provided -->
+                            <div class="mb-6">
+                                <label for="pncProvided" class="block text-gray-700 text-lg font-semibold">PNC provided
+                                    <span class="text-red-500">*</span></label>
+                                <select id="pncProvided"
+                                    class="form-select mt-2 block w-full p-3 border border-gray-300 rounded-md"
+                                    name="pncProvided" required>
+                                    <option value="" disabled selected>Select an option</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                                <p id="error-pncProvided" class="text-red-500 text-sm"></p>
+                            </div>
+
+                            <!-- Nutrition and Health Promotion -->
+                            <div class="mb-6">
+                                <label for="nutritionHealth" class="block text-gray-700 text-lg font-semibold">Nutrition
+                                    and health promotion to children and adolescents provided <span
+                                        class="text-red-500">*</span></label>
+                                <select id="nutritionHealth"
+                                    class="form-select mt-2 block w-full p-3 border border-gray-300 rounded-md"
+                                    name="nutritionHealth" required>
+                                    <option value="" disabled selected>Select an option</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                                <p id="error-nutritionHealth" class="text-red-500 text-sm"></p>
+                            </div>
+
+                            <!-- Vaccines in Carrier -->
+                            <div class="mb-6">
+                                <label for="vaccinesCarrier" class="block text-gray-700 text-lg font-semibold">Are
+                                    Vaccines kept in Vaccine Carrier? <span class="text-red-500">*</span></label>
+                                <select id="vaccinesCarrier"
+                                    class="form-select mt-2 block w-full p-3 border border-gray-300 rounded-md"
+                                    name="vaccinesCarrier" required>
+                                    <option value="" disabled selected>Select an option</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                                <p id="error-vaccinesCarrier" class="text-red-500 text-sm"></p>
+                            </div>
+
+                            <!-- MCP Cards -->
+                            <div class="mb-6">
+                                <label for="mcpCards" class="block text-gray-700 text-lg font-semibold">MCP Cards <span
+                                        class="text-red-500">*</span></label>
+                                <select id="mcpCards"
+                                    class="form-select mt-2 block w-full p-3 border border-gray-300 rounded-md"
+                                    name="mcpCards" required>
+                                    <option value="" disabled selected>Select an option</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                                <p id="error-mcpCards" class="text-red-500 text-sm"></p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Save & Next Button -->
+                    <div class="flex justify-end mt-6">
+                        <button type="button"
+                            class="save-next bg-blue-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-600 transition duration-300"
+                            onclick="validateAndNext(1)">
+                            Save & Next
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+            <!-- Section 2: ASHA Details -->
+            <div id="section2" class="section bg-white p-6 rounded-lg shadow-md mb-4 hidden " data-section="2">
+                <div class="mb-6">
+                    <h2 class="text-3xl font-bold mb-6 text-black-600">ASHA Details</h2>
+                    <p class="text-sm text-red-500 mb-4">* indicates a required question</p>
+
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h2 class="text-2xl font-bold mb-6 text-blue-600">ASHA Information</h2>
+
+                        <!-- ASHA's Name -->
+                        <div class="mb-6">
+                            <label for="ashaName" class="block text-gray-700 text-lg font-semibold">ASHA's Name <span
+                                    class="text-red-500">*</span></label>
+                            <input type="text" id="ashaName" name="ashaName" minlength="2" maxlength="30"
+                                class="form-input mt-2 block w-full p-3 border border-gray-300 rounded-md"
+                                placeholder="Enter ASHA's Name" required>
+                            <p id="error-ashaName" class="text-red-500 text-sm"></p>
+                        </div>
+
+                        <!-- Danger Signs During Pregnancy -->
+                        <div class="mb-6">
+                            <label for="dangerSigns" class="block text-gray-700 text-lg font-semibold">Does ASHA know
+                                about danger sign during pregnancy? <span class="text-red-500">*</span></label>
+                            <select id="dangerSigns"
+                                class="form-select mt-2 block w-full p-3 border border-gray-300 rounded-md"
+                                name="dangerSigns" required>
+                                <option value="" disabled selected>Select an option</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                            <p id="error-dangerSigns" class="text-red-500 text-sm"></p>
+                        </div>
+
+                        <!-- ASHA Trained in HBYC -->
+                        <div class="mb-6">
+                            <label for="trainedHBYC" class="block text-gray-700 text-lg font-semibold">ASHA trained in
+                                HBYC? <span class="text-red-500">*</span></label>
+                            <select id="trainedHBYC"
+                                class="form-select mt-2 block w-full p-3 border border-gray-300 rounded-md"
+                                name="trainedHBYC" required>
+                                <option value="" disabled selected>Select an option</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                            <p id="error-trainedHBYC" class="text-red-500 text-sm"></p>
+                        </div>
+
+                        <!-- EC Survey -->
+                        <div class="mb-6">
+                            <label for="ecSurvey" class="block text-gray-700 text-lg font-semibold">Has the ASHA carried
+                                out EC survey last year? <span class="text-red-500">*</span></label>
+                            <select id="ecSurvey"
+                                class="form-select mt-2 block w-full p-3 border border-gray-300 rounded-md"
+                                name="ecSurvey" required>
+                                <option value="" disabled selected>Select an option</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                            <p id="error-ecSurvey" class="text-red-500 text-sm"></p>
+                        </div>
+
+                        <!-- NCD-CPHC IT Application -->
+                        <div class="mb-6">
+                            <label for="ncdTraining" class="block text-gray-700 text-lg font-semibold">Have ASHAs been
+                                trained in use of NCD-CPHC IT application? <span class="text-red-500">*</span></label>
+                            <select id="ncdTraining"
+                                class="form-select mt-2 block w-full p-3 border border-gray-300 rounded-md"
+                                name="ncdTraining" required>
+                                <option value="" disabled selected>Select an option</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                            <p id="error-ncdTraining" class="text-red-500 text-sm"></p>
+                        </div>
+
+                        <!-- High Risk Pregnancies -->
+                        <div class="mb-6">
+                            <label for="highRiskPregnancies" class="block text-gray-700 text-lg font-semibold">High risk
+                                pregnancies identified by ASHA in last three months <span
+                                    class="text-red-500">*</span></label>
+                            <input type="number" id="highRiskPregnancies" name="highRiskPregnancies" min="0" max="80"
+                                class="form-input mt-2 block w-full p-3 border border-gray-300 rounded-md"
+                                placeholder="Enter a number" required>
+                            <p id="error-highRiskPregnancies" class="text-red-500 text-sm"></p>
+                        </div>
+
+                        <!-- Newborns Visited for HBYC -->
+                        <div class="mb-6">
+                            <label for="newbornsHBYC" class="block text-gray-700 text-lg font-semibold">Newborns visited
+                                for HBYC in last three months <span class="text-red-500">*</span></label>
+                            <input type="number" id="newbornsHBYC" name="newbornsHBYC" min="0" max="80"
+                                class="form-input mt-2 block w-full p-3 border border-gray-300 rounded-md"
+                                placeholder="Enter a number" required>
+                            <p id="error-newbornsHBYC" class="text-red-500 text-sm"></p>
+                        </div>
+
+                        <!-- ASHA Awareness of Contraceptive Choices -->
+                        <div class="mb-6">
+                            <label for="contraceptiveAwareness" class="block text-gray-700 text-lg font-semibold">Is
+                                ASHA aware about the contraceptive choices available? <span
+                                    class="text-red-500">*</span></label>
+                            <select id="contraceptiveAwareness"
+                                class="form-select mt-2 block w-full p-3 border border-gray-300 rounded-md"
+                                name="contraceptiveAwareness" required>
+                                <option value="" disabled selected>Select an option</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                            <p id="error-contraceptiveAwareness" class="text-red-500 text-sm"></p>
+                        </div>
+
+                        <!-- DOT Provider -->
+                        <div class="mb-6">
+                            <label for="dotProvider" class="block text-gray-700 text-lg font-semibold">Does the ASHA
+                                function as Treatment Supporter (DOT Provider)? <span
+                                    class="text-red-500">*</span></label>
+                            <select id="dotProvider"
+                                class="form-select mt-2 block w-full p-3 border border-gray-300 rounded-md"
+                                name="dotProvider" required>
+                                <option value="" disabled selected>Select an option</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                            <p id="error-dotProvider" class="text-red-500 text-sm"></p>
+                        </div>
+
+                        <!-- Trained on Module 6 & 7 -->
+                        <div class="mb-6">
+                            <label for="module6And7" class="block text-gray-700 text-lg font-semibold">Is the ASHA
+                                trained on module 6 & 7 for HBNC? <span class="text-red-500">*</span></label>
+                            <select id="module6And7"
+                                class="form-select mt-2 block w-full p-3 border border-gray-300 rounded-md"
+                                name="module6And7" required>
+                                <option value="" disabled selected>Select an option</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                            <p id="error-module6And7" class="text-red-500 text-sm"></p>
+                        </div>
+
+                        <!-- Sick Newborn Identified -->
+                        <div class="mb-6">
+                            <label for="sickNewbornIdentified" class="block text-gray-700 text-lg font-semibold">Sick
+                                newborns with danger signs identified by ASHA in last three months <span
+                                    class="text-red-500">*</span></label>
+                            <input type="number" id="sickNewbornIdentified" name="sickNewbornIdentified" min="0"
+                                max="80" class="form-input mt-2 block w-full p-3 border border-gray-300 rounded-md"
+                                placeholder="Enter a number" required>
+                            <p id="error-sickNewbornIdentified" class="text-red-500 text-sm"></p>
+                        </div>
+
+
+                        <!-- Indenting FP Commodities -->
+                        <div class="mb-6">
+                            <label for="fpIndenting" class="block text-gray-700 text-lg font-semibold">
+                                Has the ASHA started indenting FP commodities through FP-LMIS?
+                                <span class="text-red-500">*</span>
+                            </label>
+                            <select id="fpIndenting"
+                                class="form-select mt-2 block w-full p-3 border border-gray-300 rounded-md"
+                                name="fpIndenting" required>
+                                <option value="" disabled selected>Select an option</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                            <p id="error-fpIndenting" class="text-red-500 text-sm"></p>
+                        </div>
+
+                        <!-- Newborns Vi sited for HBNC -->
+                        <div class="mb-6">
+                            <label for="newbornsHBNC" class="block text-gray-700 text-lg font-semibold">
+                                Newborns visited for HBNC in last three months
+                                <span class="text-red-500">*</span>
+                            </label>
+                            <input type="number" id="newbornsHBNC" name="newbornsHBNC" min="0" max="80"
+                                class="form-input mt-2 block w-full p-3 border border-gray-300 rounded-md"
+                                placeholder="Enter a number" required>
+                            <p id="error-newbornsHBNC" class="text-red-500 text-sm"></p>
+                        </div>
+                        <!-- Sick Newborn Referred -->
+                        <div class="mb-6">
+                            <label for="sickNewbornReferred" class="block text-gray-700 text-lg font-semibold">
+                                Sick newborns with danger signs referred to higher facilities in last three months
+                                <span class="text-red-500">*</span>
+                            </label>
+                            <input type="number" id="sickNewbornReferred" name="sickNewbornReferred" min="0" max="80"
+                                class="form-input mt-2 block w-full p-3 border border-gray-300 rounded-md"
+                                placeholder="Enter a number" required>
+                            <p id="error-sickNewbornReferred" class="text-red-500 text-sm"></p>
+                        </div>
+                        <!-- Presumptive TB Cases -->
+                        <div class="mb-6">
+                            <label for="tbCases" class="block text-gray-700 text-lg font-semibold">Presumptive TB cases
+                                referred to nearest microscopy center in last three months <span
+                                    class="text-red-500">*</span></label>
+                            <input type="number" id="tbCases" name="tbCases" min="0" max="500"
+                                class="form-input mt-2 block w-full p-3 border border-gray-300 rounded-md"
+                                placeholder="Enter a number" required>
+                            <p id="error-tbCases" class="text-red-500 text-sm"></p>
+                        </div>
+
+                        <!-- Individuals Screened for NCD -->
+                        <div class="mb-6">
+                            <label for="ncdScreening" class="block text-gray-700 text-lg font-semibold">Number of
+                                individuals aged 30 years and above screened for NCD at SHC/SHC-HWCs in last three
+                                months <span class="text-red-500">*</span></label>
+                            <input type="number" id="ncdScreening" name="ncdScreening" min="0" max="1000"
+                                class="form-input mt-2 block w-full p-3 border border-gray-300 rounded-md"
+                                placeholder="Enter a number" required>
+                            <p id="error-ncdScreening" class="text-red-500 text-sm"></p>
+                        </div>
+
+                        <!-- Delay in Payments -->
+                        <div class="mb-6">
+                            <label for="delayPayments" class="block text-gray-700 text-lg font-semibold">Is there any
+                                delay in payments to ASHA in last six months? <span
+                                    class="text-red-500">*</span></label>
+                            <select id="delayPayments"
+                                class="form-select mt-2 block w-full p-3 border border-gray-300 rounded-md"
+                                name="delayPayments" required>
+                                <option value="" disabled selected>Select an option</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                            <p id="error-delayPayments" class="text-red-500 text-sm"></p>
+                        </div>
+                    </div>
+                    <!-- Save & Next Button -->
+                    <div class="flex justify-end mt-6">
+                        <button type="button"
+                            class="save-next bg-blue-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-600 transition duration-300"
+                            onclick="validateAndNext(2)">
+                            Save & Next
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 3: Essential Supplies Checklist -->
+            <div id="section3" class="section bg-white p-6 rounded-lg shadow-md mb-4 hidden" data-section="3">
+                <div class="mb-6">
+                    <h2 class="text-3xl font-bold mb-6 text-black-600">Essential Commodities</h2>
+                    <p class="text-sm text-red-500 mb-4">* indicates a required question</p>
+
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <!-- Pregnancy Testing Kit -->
+                        <div class="mb-6">
+                            <label for="pregnancyKit" class="block text-gray-700 text-lg font-semibold">
+                                Pregnancy Testing Kit (Nischay Kit) <span class="text-red-500">*</span>
+                            </label>
+                            <select id="pregnancyKit" name="pregnancyKit"
+                                class="form-select mt-2 block w-full p-3 border border-gray-300 rounded-md" required>
+                                <option value="" disabled selected>Select an option</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                            <p id="error-pregnancyKit" class="text-red-500 text-sm"></p>
+                        </div>
+
+                        <!-- Condoms -->
+                        <div class="mb-6">
+                            <label for="condoms" class="block text-gray-700 text-lg font-semibold">
+                                Condoms (Nirodh) <span class="text-red-500">*</span>
+                            </label>
+                            <select id="condoms" name="condoms"
+                                class="form-select mt-2 block w-full p-3 border border-gray-300 rounded-md" required>
+                                <option value="" disabled selected>Select an option</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                            <p id="error-condoms" class="text-red-500 text-sm"></p>
+                        </div>
+
+                        <!-- HBNC Kit -->
+                        <div class="mb-6">
+                            <label for="hbncKit" class="block text-gray-700 text-lg font-semibold">
+                                HBNC Kit (Newborn weighing Scale, Digital Thermometer, Baby Blanket & Stopwatch) <span
+                                    class="text-red-500">*</span>
+                            </label>
+                            <select id="hbncKit" name="hbncKit"
+                                class="form-select mt-2 block w-full p-3 border border-gray-300 rounded-md" required>
+                                <option value="" disabled selected>Select an option</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                            <p id="error-hbncKit" class="text-red-500 text-sm"></p>
+                        </div>
+
+                        <!-- MBI Kit -->
+                        <div class="mb-6">
+                            <label for="mbiKit" class="block text-gray-700 text-lg font-semibold">
+                                MBI kit to test iodine level in salt <span class="text-red-500">*</span>
+                            </label>
+                            <select id="mbiKit" name="mbiKit"
+                                class="form-select mt-2 block w-full p-3 border border-gray-300 rounded-md" required>
+                                <option value="" disabled selected>Select an option</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                            <p id="error-mbiKit" class="text-red-500 text-sm"></p>
+                        </div>
+
+                        <!-- COCs (Mala N) -->
+                        <div class="mb-6">
+                            <label for="cocs" class="block text-gray-700 text-lg font-semibold">
+                                COCs (Mala N) <span class="text-red-500">*</span>
+                            </label>
+                            <select id="cocs" name="cocs"
+                                class="form-select mt-2 block w-full p-3 border border-gray-300 rounded-md" required>
+                                <option value="" disabled selected>Select an option</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                            <p id="error-cocs" class="text-red-500 text-sm"></p>
+                        </div>
+
+                        <!-- Emergency Contraceptive Pills -->
+                        <div class="mb-6">
+                            <label for="emergencyPills" class="block text-gray-700 text-lg font-semibold">
+                                Emergency Contraceptive Pills (EZY pills) <span class="text-red-500">*</span>
+                            </label>
+                            <select id="emergencyPills" name="emergencyPills"
+                                class="form-select mt-2 block w-full p-3 border border-gray-300 rounded-md" required>
+                                <option value="" disabled selected>Select an option</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                            <p id="error-emergencyPills" class="text-red-500 text-sm"></p>
+                        </div>
+
+                        <!-- Centchroman (Chhaya Pills) -->
+                        <div class="mb-6">
+                            <label for="centchroman" class="block text-gray-700 text-lg font-semibold">
+                                Centchroman (Chhaya Pills) <span class="text-red-500">*</span>
+                            </label>
+                            <select id="centchroman" name="centchroman"
+                                class="form-select mt-2 block w-full p-3 border border-gray-300 rounded-md" required>
+                                <option value="" disabled selected>Select an option</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                            <p id="error-centchroman" class="text-red-500 text-sm"></p>
+                        </div>
+
+                        <!-- Syrup Amoxycillin -->
+                        <div class="mb-6">
+                            <label for="amoxycillin" class="block text-gray-700 text-lg font-semibold">
+                                Syrup Amoxycillin <span class="text-red-500">*</span>
+                            </label>
+                            <select id="amoxycillin" name="amoxycillin"
+                                class="form-select mt-2 block w-full p-3 border border-gray-300 rounded-md" required>
+                                <option value="" disabled selected>Select an option</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                            <p id="error-amoxycillin" class="text-red-500 text-sm"></p>
+                        </div>
+
+                        <!-- Pink IFA Tablets -->
+                        <div class="mb-6">
+                            <label for="pinkIFA" class="block text-gray-700 text-lg font-semibold">
+                                Pink IFA Tablets (WIFS junior) <span class="text-red-500">*</span>
+                            </label>
+                            <select id="pinkIFA" name="pinkIFA"
+                                class="form-select mt-2 block w-full p-3 border border-gray-300 rounded-md" required>
+                                <option value="" disabled selected>Select an option</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                            <p id="error-pinkIFA" class="text-red-500 text-sm"></p>
+                        </div>
+
+                        <!-- Red IFA Tablets (pregnant women) -->
+                        <div class="mb-6">
+                            <label for="redIFATablets" class="block text-gray-700 text-lg font-semibold">
+                                Red IFA Tablets (pregnant women) <span class="text-red-500">*</span>
+                            </label>
+                            <select id="redIFATablets" name="redIFATablets"
+                                class="form-select mt-2 block w-full p-3 border border-gray-300 rounded-md" required>
+                                <option value="" disabled selected>Select an option</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                            <p id="error-redIFATablets" class="text-red-500 text-sm"></p>
+                        </div>
+
+                        <!-- Blue IFA Tablets (Adolescents) -->
+                        <div class="mb-6">
+                            <label for="blueIFATablets" class="block text-gray-700 text-lg font-semibold">
+                                Blue IFA Tablets (Adolescents) <span class="text-red-500">*</span>
+                            </label>
+                            <select id="blueIFATablets" name="blueIFATablets"
+                                class="form-select mt-2 block w-full p-3 border border-gray-300 rounded-md" required>
+                                <option value="" disabled selected>Select an option</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                            <p id="error-blueIFATablets" class="text-red-500 text-sm"></p>
+                        </div>
+
+                        <!-- IFA Syrup -->
+                        <div class="mb-6">
+                            <label for="ifaSyrup" class="block text-gray-700 text-lg font-semibold">
+                                IFA Syrup <span class="text-red-500">*</span>
+                            </label>
+                            <select id="ifaSyrup" name="ifaSyrup"
+                                class="form-select mt-2 block w-full p-3 border border-gray-300 rounded-md" required>
+                                <option value="" disabled selected>Select an option</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                            <p id="error-ifaSyrup" class="text-red-500 text-sm"></p>
+                        </div>
+
+                        <!-- Cotrimoxazole Syrup -->
+                        <div class="mb-6">
+                            <label for="cotrimoxazoleSyrup" class="block text-gray-700 text-lg font-semibold">
+                                Cotrimoxazole Syrup <span class="text-red-500">*</span>
+                            </label>
+                            <select id="cotrimoxazoleSyrup" name="cotrimoxazoleSyrup"
+                                class="form-select mt-2 block w-full p-3 border border-gray-300 rounded-md" required>
+                                <option value="" disabled selected>Select an option</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                            <p id="error-cotrimoxazoleSyrup" class="text-red-500 text-sm"></p>
+                        </div>
+
+                        <!-- Cotrimoxazole Tablets -->
+                        <div class="mb-6">
+                            <label for="cotrimoxazoleTablets" class="block text-gray-700 text-lg font-semibold">
+                                Cotrimoxazole Tablets <span class="text-red-500">*</span>
+                            </label>
+                            <select id="cotrimoxazoleTablets" name="cotrimoxazoleTablets"
+                                class="form-select mt-2 block w-full p-3 border border-gray-300 rounded-md" required>
+                                <option value="" disabled selected>Select an option</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                            <p id="error-cotrimoxazoleTablets" class="text-red-500 text-sm"></p>
+                        </div>
+
+                        <!-- ORS -->
+                        <div class="mb-6">
+                            <label for="ors" class="block text-gray-700 text-lg font-semibold">
+                                ORS <span class="text-red-500">*</span>
+                            </label>
+                            <select id="ors" name="ors"
+                                class="form-select mt-2 block w-full p-3 border border-gray-300 rounded-md" required>
+                                <option value="" disabled selected>Select an option</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                            <p id="error-ors" class="text-red-500 text-sm"></p>
+                        </div>
+
+                        <!-- calcium -->
+                        <div class="mb-6">
+                            <label for="calciumTablets1" class="block text-gray-700 text-lg font-semibold">
+                                Calcium Tablets <span class="text-red-500">*</span>
+                            </label>
+                            <select id="calciumTablets1" name="calciumTablets1"
+                                class="form-select mt-2 block w-full p-3 border border-gray-300 rounded-md" required>
+                                <option value="" disabled selected>Select an option</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                            <p id="error-calciumTablets1" class="text-red-500 text-sm"></p>
+                        </div>
+
+
+                        <!-- Zinc -->
+                        <div class="mb-6">
+                            <label for="zinc" class="block text-gray-700 text-lg font-semibold">
+                                Zinc <span class="text-red-500">*</span>
+                            </label>
+                            <select id="zinc" name="zinc"
+                                class="form-select mt-2 block w-full p-3 border border-gray-300 rounded-md" required>
+                                <option value="" disabled selected>Select an option</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                            <p id="error-zinc" class="text-red-500 text-sm"></p>
+                        </div>
+
+                        <!-- Paracetamol -->
+                        <div class="mb-6">
+                            <label for="paracetamol" class="block text-gray-700 text-lg font-semibold">
+                                Paracetamol <span class="text-red-500">*</span>
+                            </label>
+                            <select id="paracetamol" name="paracetamol"
+                                class="form-select mt-2 block w-full p-3 border border-gray-300 rounded-md" required>
+                                <option value="" disabled selected>Select an option</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                            <p id="error-paracetamol" class="text-red-500 text-sm"></p>
+                        </div>
+
+
+
+                    </div>
+
+                    <!-- Save & Next Button -->
+                    <div class="flex justify-end mt-6">
+                        <button type="button"
+                            class="save-next bg-blue-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-600 transition duration-300"
+                            onclick="validateAndNext(3)">
+                            Save & Next
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Section 4: Interaction Summary -->
+            <div id="section4" class="section bg-white p-6 rounded-lg shadow-md mb-4 hidden" data-section="4">
+                <div class="mb-6">
+                    <h2 class="text-3xl font-bold mb-6 text-black-600">Interaction Summary</h2>
+                    <p class="text-sm text-red-500 mb-4">* indicates a required question</p>
+
+                    <div class="mt-4 mb-4">
+                        <p class="text-sm bg-gray-200 p-3 rounded-md shadow-sm">
+                            <span>&#8505; </span> Summarise the interaction, write NA in case of no interaction or no
+                            result
+                        </p>
+                    </div>
+
+
+
+                    <!-- Pregnant Women -->
+                    <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+                        <h2 class="text-xl font-bold mb-4 text-blue-600">Pregnant Women</h2>
+                        <div class="mb-6">
+                            <label for="pregnantWomen" class="block text-gray-700 text-lg font-semibold mb-2">
+                                ANC registration, Complete ANC check-up, Post-partum FP choices
+                                <span class="text-red-500">*</span>
+                            </label>
+                            <textarea id="pregnantWomen" name="pregnantWomen" minlength="2" maxlength="250"
+                                class="form-textarea mt-2 block w-full p-3 border border-gray-300 rounded-md"
+                                placeholder="Write Summary" required></textarea>
+                            <p id="error-pregnantWomen" class="text-red-500 text-sm"></p>
+                        </div>
+                    </div>
+
+                    <!-- Lactating Mothers -->
+                    <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+                        <h2 class="text-xl font-bold mb-4 text-blue-600">Lactating Mothers</h2>
+                        <div class="mb-6">
+                            <label for="lactatingMothers" class="block text-gray-700 text-lg font-semibold mb-2">
+                                JSSK entitlements, initiation of breastfeeding, breastfeeding practices
+                                <span class="text-red-500">*</span>
+                            </label>
+                            <textarea id="lactatingMothers" name="lactatingMothers" minlength="2" maxlength="250"
+                                class="form-textarea mt-2 block w-full p-3 border border-gray-300 rounded-md"
+                                placeholder="Write Summary" required></textarea>
+                            <p id="error-lactatingMothers" class="text-red-500 text-sm"></p>
+                        </div>
+                    </div>
+
+                    <!-- New-born/ Children -->
+                    <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+                        <h2 class="text-xl font-bold mb-4 text-blue-600">New-born/ Children</h2>
+                        <div class="mb-6">
+                            <label for="newbornChildren" class="block text-gray-700 text-lg font-semibold mb-2">
+                                Full immunisation, counselling on underweight/malnourished children,
+                                treatment of diarrhoea
+                                <span class="text-red-500">*</span>
+                            </label>
+                            <textarea id="newbornChildren" name="newbornChildren" minlength="2" maxlength="250"
+                                class="form-textarea mt-2 block w-full p-3 border border-gray-300 rounded-md"
+                                placeholder="Write Summary" required></textarea>
+                            <p id="error-newbornChildren" class="text-red-500 text-sm"></p>
+                        </div>
+                    </div>
+
+                    <!-- TB Patients -->
+                    <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+                        <h2 class="text-xl font-bold mb-4 text-blue-600">TB Patients</h2>
+                        <div class="mb-6">
+                            <label for="tbPatients" class="block text-gray-700 text-lg font-semibold mb-2">
+                                Financial aid for nutritional support, sputum microscopy, ATT treatment
+                                initiated post diagnosis
+                                <span class="text-red-500">*</span>
+                            </label>
+                            <textarea id="tbPatients" name="tbPatients" minlength="2" maxlength="250"
+                                class="form-textarea mt-2 block w-full p-3 border border-gray-300 rounded-md"
+                                placeholder="Write Summary" required></textarea>
+                            <p id="error-tbPatients" class="text-red-500 text-sm"></p>
+                        </div>
+                    </div>
+
+                    <!-- Individuals Over 30 Years -->
+                    <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+                        <h2 class="text-xl font-bold mb-4 text-blue-600">Individuals Over 30 Years</h2>
+                        <div class="mb-6">
+                            <label for="ncdIndividuals" class="block text-gray-700 text-lg font-semibold mb-2">
+                                Counselling on NCD, screening for NCDs,
+                                treatment received post screening
+                                <span class="text-red-500">*</span>
+                            </label>
+                            <textarea id="ncdIndividuals" name="ncdIndividuals" minlength="2" maxlength="250"
+                                class="form-textarea mt-2 block w-full p-3 border border-gray-300 rounded-md"
+                                placeholder="Write Summary" required></textarea>
+                            <p id="error-ncdIndividuals" class="text-red-500 text-sm"></p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Save & Submit Button -->
+                <div class="flex justify-end mt-6">
+                    <button type="button"
+                        class="save-next bg-blue-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-600 transition duration-300"
+                        onclick="validateAndNext(4)">
+                        Save & Next
+                    </button>
+                </div>
+            </div>
+
+
+            <!-- Section 5: Key Programmatic Issues -->
+            <div id="section5" class="section bg-white p-6 rounded-lg shadow-md mb-4 hidden" data-section="5">
+                <div class="mb-6">
+                    <h2 class="text-3xl font-bold mb-6 text-black-600">Key Programmatic Issues</h2>
+                    <p class="text-sm text-red-500 mb-4">* indicates a required question</p>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h2 class="text-xl font-bold mb-6 text-blue-600">Please select areas of issue</h2>
+                        <!-- Knowledge -->
+                        <div class="mb-6 bg-white p-6 rounded-lg shadow-md">
+                            <label class="inline-flex items-center">
+                                <input type="checkbox" id="knowledge" name="areasOfIssue" value="Knowledge"
+                                    class="form-checkbox" onclick="toggleFields('knowledgeFields', this)">
+                                <span class="ml-2 text-gray-700">Knowledge</span>
+                            </label>
+                            <div id="knowledgeFields" class="hidden mt-4 p-4 border rounded-md bg-gray-50">
+                                <h3 class="text-lg font-bold text-blue-600 mb-2">Knowledge</h3>
+                                <label for="knowledgeIssue"
+                                    class="block text-gray-700 text-sm font-semibold">Issue</label>
+                                <textarea id="knowledgeIssue" name="knowledgeIssue" minlength="2" maxlength="200"
+                                    class="form-textarea mt-1 block w-full p-2 border rounded-md"
+                                    placeholder="Describe the issue"></textarea>
+                                <p id="error-knowledgeIssue" class="text-red-500 text-sm mt-1"></p>
+
+                                <label for="knowledgeAction"
+                                    class="block text-gray-700 text-sm font-semibold mt-4">Action Plan</label>
+                                <textarea id="knowledgeAction" name="knowledgeAction" minlength="2" maxlength="200"
+                                    class="form-textarea mt-1 block w-full p-2 border rounded-md"
+                                    placeholder="Describe the action plan"></textarea>
+                                <p id="error-knowledgeAction" class="text-red-500 text-sm mt-1"></p>
+                            </div>
+                        </div>
+
+                        <!-- Attitude -->
+                        <div class="mb-6 bg-white p-6 rounded-lg shadow-md">
+                            <label class="inline-flex items-center">
+                                <input type="checkbox" id="attitude" name="areasOfIssue" value="Attitude"
+                                    class="form-checkbox" onclick="toggleFields('attitudeFields', this)">
+                                <span class="ml-2 text-gray-700">Attitude</span>
+                            </label>
+                            <div id="attitudeFields" class="hidden mt-4 p-4 border rounded-md bg-gray-50">
+                                <h3 class="text-lg font-bold text-blue-600 mb-2">Attitude</h3>
+                                <label for="attitudeIssue"
+                                    class="block text-gray-700 text-sm font-semibold">Issue</label>
+                                <textarea id="attitudeIssue" name="attitudeIssue" minlength="2" maxlength="200"
+                                    class="form-textarea mt-1 block w-full p-2 border rounded-md"
+                                    placeholder="Describe the issue"></textarea>
+                                <p id="error-attitudeIssue" class="text-red-500 text-sm mt-1"></p>
+
+                                <label for="attitudeAction"
+                                    class="block text-gray-700 text-sm font-semibold mt-4">Action Plan</label>
+                                <textarea id="attitudeAction" name="attitudeAction" minlength="2" maxlength="200"
+                                    class="form-textarea mt-1 block w-full p-2 border rounded-md"
+                                    placeholder="Describe the action plan"></textarea>
+                                <p id="error-attitudeAction" class="text-red-500 text-sm mt-1"></p>
+                            </div>
+                        </div>
+
+                        <!-- Practice -->
+                        <div class="mb-6 bg-white p-6 rounded-lg shadow-md">
+                            <label class="inline-flex items-center">
+                                <input type="checkbox" id="practice" name="areasOfIssue" value="Practice"
+                                    class="form-checkbox" onclick="toggleFields('practiceFields', this)">
+                                <span class="ml-2 text-gray-700">Practice</span>
+                            </label>
+                            <div id="practiceFields" class="hidden mt-4 p-4 border rounded-md bg-gray-50">
+                                <h3 class="text-lg font-bold text-blue-600 mb-2">Practice</h3>
+                                <label for="practiceIssue"
+                                    class="block text-gray-700 text-sm font-semibold">Issue</label>
+                                <textarea id="practiceIssue" name="practiceIssue" minlength="2" maxlength="200"
+                                    class="form-textarea mt-1 block w-full p-2 border rounded-md"
+                                    placeholder="Describe the issue"></textarea>
+                                <p id="error-practiceIssue" class="text-red-500 text-sm mt-1"></p>
+
+                                <label for="practiceAction"
+                                    class="block text-gray-700 text-sm font-semibold mt-4">Action Plan</label>
+                                <textarea id="practiceAction" name="practiceAction" minlength="2" maxlength="200"
+                                    class="form-textarea mt-1 block w-full p-2 border rounded-md"
+                                    placeholder="Describe the action plan"></textarea>
+                                <p id="error-practiceAction" class="text-red-500 text-sm mt-1"></p>
+                            </div>
+                        </div>
+
+                        <!-- Other (Specify) -->
+                        <div class="mb-6 bg-white p-6 rounded-lg shadow-md">
+                            <label class="inline-flex items-center">
+                                <input type="checkbox" id="other" name="areasOfIssue" value="Other"
+                                    class="form-checkbox" onclick="toggleFields('otherFields', this)">
+                                <span class="ml-2 text-gray-700">Other (Specify)</span>
+                            </label>
+                            <div id="otherFields" class="hidden mt-4 p-4 border rounded-md bg-gray-50">
+                                <h3 class="text-lg font-bold text-blue-600 mb-2">Other (Specify)</h3>
+                                <label for="otherIssue" class="block text-gray-700 text-sm font-semibold">Issue</label>
+                                <textarea id="otherIssue" name="otherIssue" minlength="2" maxlength="200"
+                                    class="form-textarea mt-1 block w-full p-2 border rounded-md"
+                                    placeholder="Describe the issue"></textarea>
+                                <p id="error-otherIssue" class="text-red-500 text-sm mt-1"></p>
+
+                                <label for="otherAction" class="block text-gray-700 text-sm font-semibold mt-4">Action
+                                    Plan</label>
+                                <textarea id="otherAction" name="otherAction" minlength="2" maxlength="200"
+                                    class="form-textarea mt-1 block w-full p-2 border rounded-md"
+                                    placeholder="Describe the action plan"></textarea>
+                                <p id="error-otherAction" class="text-red-500 text-sm mt-1"></p>
+                            </div>
+                        </div>
+
+
+                        <!-- None -->
+                        <div class="mb-6 bg-white p-6 rounded-lg shadow-md">
+                            <label class="inline-flex items-center">
+                                <input type="checkbox" id="none" name="areasOfIssue" value="None" class="form-checkbox"
+                                    onclick="toggleNone(this)">
+                                <span class="ml-2 text-gray-700">None</span>
+                            </label>
+                        </div>
+                    </div>
+                    <!-- Submit Button -->
+                    <div class="flex justify-end mt-6">
+                        <button type="submit"
+                            class="submit bg-green-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-green-600 transition duration-300">
+                            Submit
+                        </button>
+                    </div>
+                </div>
+            </div> 
+        </form>
+            <div id="successMessage" class="hidden bg-green-100 border border-green-400 text-green-700 px-6 py-4 rounded-lg shadow-lg text-center">
+                <h2 class="text-2xl font-bold mb-2">Form Submitted Successfully!</h2>
+                <p class="mb-4">Your data has been submitted.</p>
+                </a>
+                <!-- <button onclick="restartForm()" class="mt-4 bg-blue-500 text-white px-6 py-2 rounded-lg shadow-md hover:bg-blue-600 transition duration-300">
+                    Fill Another Form
+                </button> -->
+            </div>
+            
+        
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Quarterly Status</title>
+    <style>
+        /* Floating label effect */
+        .input-container {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .input-container input {
+            padding-top: 1.5rem;
+            /* Make space for the floating label */
+            padding-bottom: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .input-container label {
+            position: absolute;
+            left: 1rem;
+            top: 1rem;
+            transition: all 0.3s ease;
+            color: gray;
+        }
+
+        .input-container input:not(:placeholder-shown)+label,
+        .input-container input:focus+label {
+            top: -0.5rem;
+            left: 1rem;
+            font-size: 0.875rem;
+            color: black;
+            /* Optional: Change the label color when floating */
+        }
+
+        .input-container input:focus {
+            border-top-color: transparent;
+            /* Hide the top border on focus */
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+
+    <div class="container mx-auto p-6">
+        <div id="section7" class="section bg-white p-6 rounded shadow-md mb-4" style="display: block;">
+            <h2 class="text-xl font-bold mb-6 text-blue-600">Percentage of ANC registered within the first trimester
+                against total ANC registrations. (Source : HMIS)</h2>
+            <p class="text-sm text-red-500 mb-4">* indicates a required question</p>
+
+            <!-- Block level -->
+            <div id="baseline-status" class="bg-white rounded-lg shadow-md p-6 mb-4">
+                <h3 class="text-xl font-semibold text-gray-700 mb-4">Block Level</h3>
+                <div class="input-container">
+                    <input type="number" id="baseline-status-input" min="0" max="100"
+                        class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        placeholder=" ">
+                    <label for="baseline-status-input"
+                        class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+                        Baseline Status (%)
+                    </label>
+                    <p id="baseline-status-input_error" class="text-red-500 text-sm"></p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+                    <!-- Status 1st Quarter Section -->
+                    <div class="input-container">
+                        <input type="number" id="status-1st-qtr-input" min="0" max="100"
+                            class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            placeholder=" ">
+                        <label for="status-1st-qtr-input"
+                            class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+                            Status (1st QTR) (%)
+                        </label>
+                        <p id="status-1st-qtr-input_error" class="text-red-500 text-sm"></p>
+                    </div>
+
+                    <!-- Status 2nd Quarter Section -->
+                    <div class="input-container">
+                        <input type="number" id="status-2nd-qtr-input" min="0" max="100"
+                            class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            placeholder=" " >
+                        <label for="status-2nd-qtr-input"
+                            class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+                            Status (2nd QTR) (%)
+                        </label>
+                        <p id="status-2nd-qtr-input_error" class="text-red-500 text-sm"></p>
+                    </div>
+
+                    <!-- Status 3rd Quarter Section -->
+                    <div class="input-container">
+                        <input type="number" id="status-3rd-qtr-input" min="0" max="100"
+                            class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            placeholder=" " >
+                        <label for="status-3rd-qtr-input"
+                            class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+                            Status (3rd QTR) (%)
+                        </label>
+                        <p id="status-3rd-qtr-input_error" class="text-red-500 text-sm"></p>
+                    </div>
+
+                    <!-- Status 4th Quarter Section -->
+                    <div class="input-container">
+                        <input type="number" id="status-4th-qtr-input" min="0" max="100"
+                            class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            placeholder=" " >
+                        <label for="status-4th-qtr-input"
+                            class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+                            Status (4th QTR) (%)
+                        </label>
+                        <p id="status-4th-qtr-input_error" class="text-red-500 text-sm"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- State level -->
+            <div id="state-level1" class="bg-white rounded-lg shadow-md p-6 mb-4">
+                <h3 class="text-xl font-semibold text-gray-700 mb-4">State Level</h3>
+                <div class="input-container">
+                    <input type="number" id="state-level1" min="0" max="100"
+                        class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        placeholder=" " >
+                    <label for="state-level1"
+                        class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+                        State Average of (FY 22-23) (%)
+                    </label>
+                    <p id="state-level1-input_error" class="text-red-500 text-sm"></p>
+                </div>
+            </div>
+
+            <!-- District level -->
+            <div id="district-level1" class="bg-white rounded-lg shadow-md p-6 mb-4">
+                <h3 class="text-xl font-semibold text-gray-700 mb-4">District Level</h3>
+                <div class="input-container">
+                    <input type="number" id="district-level1" min="0" max="100"
+                        class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        placeholder=" " >
+                    <label for="district-level1"
+                        class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+                        District Average (FY 22-23) (%)
+                    </label>
+                    <p id="district-level1-input_error" class="text-red-500 text-sm"></p>
+                </div>
+
+            </div>
+
+            
+           
+            <h2 class="text-xl font-bold mb-6 text-blue-600">Percentage of institutional deliveries against total reported deliveries. (Source : HMIS)</h2>
+            <p class="text-sm text-red-500 mb-4">* indicates a required question</p>
+            
+            <!-- Block level -->
+            <div id="block-institutional-deliveries-section" class="bg-white rounded-lg shadow-md p-6 mb-4">
+                <h3 class="text-xl font-semibold text-gray-700 mb-4">Block Level</h3>
+                <div class="input-container">
+                    <input type="number" id="block-baseline-status-input" min="0" max="100"
+                        class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        placeholder=" " >
+                    <label for="block-baseline-status-input"
+                        class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+                        Baseline Status (%)
+                    </label>
+                    <p id="block-baseline-status_error" class="text-red-500 text-sm"></p>
+                </div>
+            
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            
+                    <!-- Status 1st Quarter Section -->
+                    <div class="input-container">
+                        <input type="number" id="block-status-1st-qtr-input" min="0" max="100"
+                            class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            placeholder=" " >
+                        <label for="block-status-1st-qtr-input"
+                            class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+                            Status (1st QTR) (%)
+                        </label>
+                        <p id="block-status-1st-qtr_error" class="text-red-500 text-sm"></p>
+                    </div>
+            
+                    <!-- Status 2nd Quarter Section -->
+                    <div class="input-container">
+                        <input type="number" id="block-status-2nd-qtr-input" min="0" max="100"
+                            class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            placeholder=" " >
+                        <label for="block-status-2nd-qtr-input"
+                            class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+                            Status (2nd QTR) (%)
+                        </label>
+                        <p id="block-status-2nd-qtr_error" class="text-red-500 text-sm"></p>
+                    </div>
+            
+                    <!-- Status 3rd Quarter Section -->
+                    <div class="input-container">
+                        <input type="number" id="block-status-3rd-qtr-input" min="0" max="100"
+                            class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            placeholder=" ">
+                        <label for="block-status-3rd-qtr-input"
+                            class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+                            Status (3rd QTR) (%)
+                        </label>
+                        <p id="block-status-3rd-qtr_error" class="text-red-500 text-sm"></p>
+                    </div>
+            
+                    <!-- Status 4th Quarter Section -->
+                    <div class="input-container">
+                        <input type="number" id="block-status-4th-qtr-input" min="0" max="100"
+                            class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            placeholder=" ">
+                        <label for="block-status-4th-qtr-input"
+                            class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+                            Status (4th QTR) (%)
+                        </label>
+                        <p id="block-status-4th-qtr_error" class="text-red-500 text-sm"></p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- State level -->
+            <div id="state-institutional-deliveries-section" class="bg-white rounded-lg shadow-md p-6 mb-4">
+                <h3 class="text-xl font-semibold text-gray-700 mb-4">State Level</h3>
+                <div class="input-container">
+                    <input type="number" id="state-institutional-deliveries-input" min="0" max="100"
+                        class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        placeholder=" " >
+                    <label for="state-institutional-deliveries-input"
+                        class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+                        State Average of (FY 22-23) (%)
+                    </label>
+                    <p id="state-institutional-deliveries_error" class="text-red-500 text-sm"></p>
+                </div>
+            </div>
+            
+            <!-- District level -->
+            <div id="district-institutional-deliveries-section" class="bg-white rounded-lg shadow-md p-6 mb-4">
+                <h3 class="text-xl font-semibold text-gray-700 mb-4">District Level</h3>
+                <div class="input-container">
+                    <input type="number" id="district-institutional-deliveries-input" min="0" max="100"
+                        class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        placeholder=" ">
+                    <label for="district-institutional-deliveries-input"
+                        class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+                        District Average (FY 22-23) (%)
+                    </label>
+                    <p id="district-institutional-deliveries_error" class="text-red-500 text-sm"></p>
+                </div>
+            </div>
+
+            <h2 class="text-xl font-bold mb-6 text-blue-600">Percentage of low-birth weight babies (less than 2500g). (Source: HMIS)</h2>
+            <p class="text-sm text-red-500 mb-4">* indicates a required question</p>
+            
+            <!-- Block level -->
+            <div id="block-low-birth-weight-section" class="bg-white rounded-lg shadow-md p-6 mb-4">
+                <h3 class="text-xl font-semibold text-gray-700 mb-4">Block Level</h3>
+                <div class="input-container">
+                    <input type="number" id="block-low-birth-baseline-input" min="0" max="100"
+                        class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        placeholder=" ">
+                    <label for="block-low-birth-baseline-input"
+                        class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+                        Baseline Status (%)
+                    </label>
+                    <p id="block-low-birth-baseline-error" class="text-red-500 text-sm"></p>
+                </div>
+            
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            
+                    <!-- Status 1st Quarter Section -->
+                    <div class="input-container">
+                        <input type="number" id="block-low-birth-1st-qtr-input" min="0" max="100"
+                            class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            placeholder=" ">
+                        <label for="block-low-birth-1st-qtr-input"
+                            class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+                            Status (1st QTR) (%)
+                        </label>
+                        <p id="block-low-birth-1st-qtr-error" class="text-red-500 text-sm"></p>
+                    </div>
+            
+                    <!-- Status 2nd Quarter Section -->
+                    <div class="input-container">
+                        <input type="number" id="block-low-birth-2nd-qtr-input" min="0" max="100"
+                            class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            placeholder=" ">
+                        <label for="block-low-birth-2nd-qtr-input"
+                            class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+                            Status (2nd QTR) (%)
+                        </label>
+                        <p id="block-low-birth-2nd-qtr-error" class="text-red-500 text-sm"></p>
+                    </div>
+            
+                    <!-- Status 3rd Quarter Section -->
+                    <div class="input-container">
+                        <input type="number" id="block-low-birth-3rd-qtr-input" min="0" max="100"
+                            class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            placeholder=" ">
+                        <label for="block-low-birth-3rd-qtr-input"
+                            class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+                            Status (3rd QTR) (%)
+                        </label>
+                        <p id="block-low-birth-3rd-qtr-error" class="text-red-500 text-sm"></p>
+                    </div>
+            
+                    <!-- Status 4th Quarter Section -->
+                    <div class="input-container">
+                        <input type="number" id="block-low-birth-4th-qtr-input" min="0" max="100"
+                            class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            placeholder=" ">
+                        <label for="block-low-birth-4th-qtr-input"
+                            class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+                            Status (4th QTR) (%)
+                        </label>
+                        <p id="block-low-birth-4th-qtr-error" class="text-red-500 text-sm"></p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- State level -->
+            <div id="state-low-birth-weight-section" class="bg-white rounded-lg shadow-md p-6 mb-4">
+                <h3 class="text-xl font-semibold text-gray-700 mb-4">State Level</h3>
+                <div class="input-container">
+                    <input type="number" id="state-low-birth-weight-input" min="0" max="100"
+                        class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        placeholder=" ">
+                    <label for="state-low-birth-weight-input"
+                        class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+                        State Average of (FY 22-23) (%)
+                    </label>
+                    <p id="state-low-birth-weight-error" class="text-red-500 text-sm"></p>
+                </div>
+            </div>
+            
+            <!-- District level -->
+            <div id="district-low-birth-weight-section" class="bg-white rounded-lg shadow-md p-6 mb-4">
+                <h3 class="text-xl font-semibold text-gray-700 mb-4">District Level</h3>
+                <div class="input-container">
+                    <input type="number" id="district-low-birth-weight-input" min="0" max="100"
+                        class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        placeholder=" ">
+                    <label for="district-low-birth-weight-input"
+                        class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+                        District Average (FY 22-23) (%)
+                    </label>
+                    <p id="district-low-birth-weight-error" class="text-red-500 text-sm"></p>
+                </div>
+            </div>
+            
+        <h2 class="text-xl font-bold mb-6 text-blue-600">Percentage of Tuberculosis (TB) cases treated successfully against TB cases notified a year ago. (Source: Nikshay Portal)</h2>
+<p class="text-sm text-red-500 mb-4">* indicates a required question</p>
+
+<!-- Block level -->
+<div id="block-tb-cases-section" class="bg-white rounded-lg shadow-md p-6 mb-4">
+    <h3 class="text-xl font-semibold text-gray-700 mb-4">Block Level</h3>
+    <div class="input-container">
+        <input type="number" id="block-tb-baseline-status-input" min="0" max="100"
+            class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder=" ">
+        <label for="block-tb-baseline-status-input"
+            class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+            Baseline Status (%)
+        </label>
+        <p id="block-tb-baseline-status-error" class="text-red-500 text-sm"></p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+        <!-- Status 1st Quarter Section -->
+        <div class="input-container">
+            <input type="number" id="block-tb-status-1st-qtr-input" min="0" max="100"
+                class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder=" ">
+            <label for="block-tb-status-1st-qtr-input"
+                class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+                Status (1st QTR) (%)
+            </label>
+            <p id="block-tb-status-1st-qtr-error" class="text-red-500 text-sm"></p>
+        </div>
+
+        <!-- Status 2nd Quarter Section -->
+        <div class="input-container">
+            <input type="number" id="block-tb-status-2nd-qtr-input" min="0" max="100"
+                class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder=" ">
+            <label for="block-tb-status-2nd-qtr-input"
+                class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+                Status (2nd QTR) (%)
+            </label>
+            <p id="block-tb-status-2nd-qtr-error" class="text-red-500 text-sm"></p>
+        </div>
+
+        <!-- Status 3rd Quarter Section -->
+        <div class="input-container">
+            <input type="number" id="block-tb-status-3rd-qtr-input" min="0" max="100"
+                class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder=" ">
+            <label for="block-tb-status-3rd-qtr-input"
+                class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+                Status (3rd QTR) (%)
+            </label>
+            <p id="block-tb-status-3rd-qtr-error" class="text-red-500 text-sm"></p>
+        </div>
+
+        <!-- Status 4th Quarter Section -->
+        <div class="input-container">
+            <input type="number" id="block-tb-status-4th-qtr-input" min="0" max="100"
+                class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder=" ">
+            <label for="block-tb-status-4th-qtr-input"
+                class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+                Status (4th QTR) (%)
+            </label>
+            <p id="block-tb-status-4th-qtr-error" class="text-red-500 text-sm"></p>
+        </div>
+    </div>
+</div>
+
+<!-- State level -->
+<div id="state-tb-cases-section" class="bg-white rounded-lg shadow-md p-6 mb-4">
+    <h3 class="text-xl font-semibold text-gray-700 mb-4">State Level</h3>
+    <div class="input-container">
+        <input type="number" id="state-tb-status-input" min="0" max="100"
+            class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder=" ">
+        <label for="state-tb-status-input"
+            class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+            State Average of (FY 22-23) (%)
+        </label>
+        <p id="state-tb-status-error" class="text-red-500 text-sm"></p>
+    </div>
+</div>
+
+<!-- District level -->
+<div id="district-tb-cases-section" class="bg-white rounded-lg shadow-md p-6 mb-4">
+    <h3 class="text-xl font-semibold text-gray-700 mb-4">District Level</h3>
+    <div class="input-container">
+        <input type="number" id="district-tb-status-input" min="0" max="100"
+            class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder=" ">
+        <label for="district-tb-status-input"
+            class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+            District Average (FY 22-23) (%)
+        </label>
+        <p id="district-tb-status-error" class="text-red-500 text-sm"></p>
+    </div>
+</div>
+
+<h2 class="text-xl font-bold mb-6 text-blue-600">Percentage of National Quality Assurance Standards (NQAS) certified facilities in Block. (Source: Saksham Portal)</h2>
+<p class="text-sm text-red-500 mb-4">* indicates a required question</p>
+
+<!-- Block level -->
+<div id="block-nqas-section" class="bg-white rounded-lg shadow-md p-6 mb-4">
+    <h3 class="text-xl font-semibold text-gray-700 mb-4">Block Level</h3>
+    <div class="input-container">
+        <input type="number" id="block-nqas-baseline-input" min="0" max="100"
+            class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder=" ">
+        <label for="block-nqas-baseline-input"
+            class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+            Baseline Status (%)
+        </label>
+        <p id="block-nqas-baseline-error" class="text-red-500 text-sm"></p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+        <!-- Status 1st Quarter Section -->
+        <div class="input-container">
+            <input type="number" id="block-nqas-1st-qtr-input" min="0" max="100"
+                class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder=" ">
+            <label for="block-nqas-1st-qtr-input"
+                class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+                Status (1st QTR) (%)
+            </label>
+            <p id="block-nqas-1st-qtr-error" class="text-red-500 text-sm"></p>
+        </div>
+
+        <!-- Status 2nd Quarter Section -->
+        <div class="input-container">
+            <input type="number" id="block-nqas-2nd-qtr-input" min="0" max="100"
+                class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder=" ">
+            <label for="block-nqas-2nd-qtr-input"
+                class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+                Status (2nd QTR) (%)
+            </label>
+            <p id="block-nqas-2nd-qtr-error" class="text-red-500 text-sm"></p>
+        </div>
+
+        <!-- Status 3rd Quarter Section -->
+        <div class="input-container">
+            <input type="number" id="block-nqas-3rd-qtr-input" min="0" max="100"
+                class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder=" ">
+            <label for="block-nqas-3rd-qtr-input"
+                class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+                Status (3rd QTR) (%)
+            </label>
+            <p id="block-nqas-3rd-qtr-error" class="text-red-500 text-sm"></p>
+        </div>
+
+        <!-- Status 4th Quarter Section -->
+        <div class="input-container">
+            <input type="number" id="block-nqas-4th-qtr-input" min="0" max="100"
+                class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder=" ">
+            <label for="block-nqas-4th-qtr-input"
+                class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+                Status (4th QTR) (%)
+            </label>
+            <p id="block-nqas-4th-qtr-error" class="text-red-500 text-sm"></p>
+        </div>
+    </div>
+</div>
+
+<!-- State level -->
+<div id="state-nqas-section" class="bg-white rounded-lg shadow-md p-6 mb-4">
+    <h3 class="text-xl font-semibold text-gray-700 mb-4">State Level</h3>
+    <div class="input-container">
+        <input type="number" id="state-nqas-input" min="0" max="100"
+            class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder=" ">
+        <label for="state-nqas-input"
+            class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+            State Average of (FY 22-23) (%)
+        </label>
+        <p id="state-nqas-error" class="text-red-500 text-sm"></p>
+    </div>
+</div>
+
+<!-- District level -->
+<div id="district-nqas-section" class="bg-white rounded-lg shadow-md p-6 mb-4">
+    <h3 class="text-xl font-semibold text-gray-700 mb-4">District Level</h3>
+    <div class="input-container">
+        <input type="number" id="district-nqas-input" min="0" max="100"
+            class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder=" ">
+        <label for="district-nqas-input"
+            class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+            District Average (FY 22-23) (%)
+        </label>
+        <p id="district-nqas-error" class="text-red-500 text-sm"></p>
+    </div>
+</div>
+
+
+
+<h2 class="text-xl font-bold mb-6 text-blue-600">Percentage of persons screened for Hypertension against targeted population in the Block. (Source: NCD Portal)</h2>
+<p class="text-sm text-red-500 mb-4">* indicates a required question</p>
+
+<!-- Block level -->
+<div id="block-hypertension-section" class="bg-white rounded-lg shadow-md p-6 mb-4">
+    <h3 class="text-xl font-semibold text-gray-700 mb-4">Block Level</h3>
+    <div class="input-container">
+        <input type="number" id="block-hypertension-baseline-input" min="0" max="100"
+            class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder=" ">
+        <label for="block-hypertension-baseline-input"
+            class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+            Baseline Status (%)
+        </label>
+        <p id="block-hypertension-baseline-error" class="text-red-500 text-sm"></p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+        <!-- Status 1st Quarter Section -->
+        <div class="input-container">
+            <input type="number" id="block-hypertension-1st-qtr-input" min="0" max="100"
+                class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder=" ">
+            <label for="block-hypertension-1st-qtr-input"
+                class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+                Status (1st QTR) (%)
+            </label>
+            <p id="block-hypertension-1st-qtr-error" class="text-red-500 text-sm"></p>
+        </div>
+
+        <!-- Status 2nd Quarter Section -->
+        <div class="input-container">
+            <input type="number" id="block-hypertension-2nd-qtr-input" min="0" max="100"
+                class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder=" ">
+            <label for="block-hypertension-2nd-qtr-input"
+                class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+                Status (2nd QTR) (%)
+            </label>
+            <p id="block-hypertension-2nd-qtr-error" class="text-red-500 text-sm"></p>
+        </div>
+
+        <!-- Status 3rd Quarter Section -->
+        <div class="input-container">
+            <input type="number" id="block-hypertension-3rd-qtr-input" min="0" max="100"
+                class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder=" ">
+            <label for="block-hypertension-3rd-qtr-input"
+                class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+                Status (3rd QTR) (%)
+            </label>
+            <p id="block-hypertension-3rd-qtr-error" class="text-red-500 text-sm"></p>
+        </div>
+
+        <!-- Status 4th Quarter Section -->
+        <div class="input-container">
+            <input type="number" id="block-hypertension-4th-qtr-input" min="0" max="100"
+                class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder=" ">
+            <label for="block-hypertension-4th-qtr-input"
+                class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+                Status (4th QTR) (%)
+            </label>
+            <p id="block-hypertension-4th-qtr-error" class="text-red-500 text-sm"></p>
+        </div>
+    </div>
+</div>
+
+<!-- State level -->
+<div id="state-hypertension-section" class="bg-white rounded-lg shadow-md p-6 mb-4">
+    <h3 class="text-xl font-semibold text-gray-700 mb-4">State Level</h3>
+    <div class="input-container">
+        <input type="number" id="state-hypertension-input" min="0" max="100"
+            class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder=" ">
+        <label for="state-hypertension-input"
+            class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+            State Average of (FY 22-23) (%)
+        </label>
+        <p id="state-hypertension-error" class="text-red-500 text-sm"></p>
+    </div>
+</div>
+
+<!-- District level -->
+<div id="district-hypertension-section" class="bg-white rounded-lg shadow-md p-6 mb-4">
+    <h3 class="text-xl font-semibold text-gray-700 mb-4">District Level</h3>
+    <div class="input-container">
+        <input type="number" id="district-hypertension-input" min="0" max="100"
+            class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder=" ">
+        <label for="district-hypertension-input"
+            class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+            District Average (FY 22-23) (%)
+        </label>
+        <p id="district-hypertension-error" class="text-red-500 text-sm"></p>
+    </div>
+</div>
+
+    
+<h2 class="text-xl font-bold mb-6 text-blue-600">Percentage of persons screened for Diabetes against targeted population in the Block. (Source: NCD Portal)</h2>
+<p class="text-sm text-red-500 mb-4">* indicates a required question</p>
+
+<!-- Block level -->
+<div id="block-diabetes-section" class="bg-white rounded-lg shadow-md p-6 mb-4">
+    <h3 class="text-xl font-semibold text-gray-700 mb-4">Block Level</h3>
+    <div class="input-container">
+        <input type="number" id="block-diabetes-baseline-input" min="0" max="100"
+            class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder=" ">
+        <label for="block-diabetes-baseline-input"
+            class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+            Baseline Status (%)
+        </label>
+        <p id="block-diabetes-baseline-error" class="text-red-500 text-sm"></p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+        <!-- Status 1st Quarter Section -->
+        <div class="input-container">
+            <input type="number" id="block-diabetes-1st-qtr-input" min="0" max="100"
+                class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder=" ">
+            <label for="block-diabetes-1st-qtr-input"
+                class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+                Status (1st QTR) (%)
+            </label>
+            <p id="block-diabetes-1st-qtr-error" class="text-red-500 text-sm"></p>
+        </div>
+
+        <!-- Status 2nd Quarter Section -->
+        <div class="input-container">
+            <input type="number" id="block-diabetes-2nd-qtr-input" min="0" max="100"
+                class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder=" ">
+            <label for="block-diabetes-2nd-qtr-input"
+                class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+                Status (2nd QTR) (%)
+            </label>
+            <p id="block-diabetes-2nd-qtr-error" class="text-red-500 text-sm"></p>
+        </div>
+
+        <!-- Status 3rd Quarter Section -->
+        <div class="input-container">
+            <input type="number" id="block-diabetes-3rd-qtr-input" min="0" max="100"
+                class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder=" ">
+            <label for="block-diabetes-3rd-qtr-input"
+                class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+                Status (3rd QTR) (%)
+            </label>
+            <p id="block-diabetes-3rd-qtr-error" class="text-red-500 text-sm"></p>
+        </div>
+
+        <!-- Status 4th Quarter Section -->
+        <div class="input-container">
+            <input type="number" id="block-diabetes-4th-qtr-input" min="0" max="100"
+                class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder=" ">
+            <label for="block-diabetes-4th-qtr-input"
+                class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+                Status (4th QTR) (%)
+            </label>
+            <p id="block-diabetes-4th-qtr-error" class="text-red-500 text-sm"></p>
+        </div>
+    </div>
+</div>
+
+<!-- State level -->
+<div id="state-diabetes-section" class="bg-white rounded-lg shadow-md p-6 mb-4">
+    <h3 class="text-xl font-semibold text-gray-700 mb-4">State Level</h3>
+    <div class="input-container">
+        <input type="number" id="state-diabetes-input" min="0" max="100"
+            class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder=" ">
+        <label for="state-diabetes-input"
+            class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+            State Average of (FY 22-23) (%)
+        </label>
+        <p id="state-diabetes-error" class="text-red-500 text-sm"></p>
+    </div>
+</div>
+
+<!-- District level -->
+<div id="district-diabetes-section" class="bg-white rounded-lg shadow-md p-6 mb-4">
+    <h3 class="text-xl font-semibold text-gray-700 mb-4">District Level</h3>
+    <div class="input-container">
+        <input type="number" id="district-diabetes-input" min="0" max="100"
+            class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder=" ">
+        <label for="district-diabetes-input"
+            class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+            District Average (FY 22-23) (%)
+        </label>
+        <p id="district-diabetes-error" class="text-red-500 text-sm"></p>
+    </div>
+</div>
+
+    
+<h2 class="text-xl font-bold mb-6 text-blue-600">Percentage of Full immunization coverage against targeted population. (Source: HMIS)</h2>
+<p class="text-sm text-red-500 mb-4">* indicates a required question</p>
+
+<!-- Block level -->
+<div id="block-full-immunization-section" class="bg-white rounded-lg shadow-md p-6 mb-4">
+    <h3 class="text-xl font-semibold text-gray-700 mb-4">Block Level</h3>
+    <div class="input-container">
+        <input type="number" id="block-full-immunization-baseline-input" min="0" max="100"
+            class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder=" ">
+        <label for="block-full-immunization-baseline-input"
+            class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+            Baseline Status (%)
+        </label>
+        <p id="block-full-immunization-baseline-error" class="text-red-500 text-sm"></p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+        <!-- Status 1st Quarter Section -->
+        <div class="input-container">
+            <input type="number" id="block-full-immunization-1st-qtr-input" min="0" max="100"
+                class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder=" ">
+            <label for="block-full-immunization-1st-qtr-input"
+                class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+                Status (1st QTR) (%)
+            </label>
+            <p id="block-full-immunization-1st-qtr-error" class="text-red-500 text-sm"></p>
+        </div>
+
+        <!-- Status 2nd Quarter Section -->
+        <div class="input-container">
+            <input type="number" id="block-full-immunization-2nd-qtr-input" min="0" max="100"
+                class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder=" ">
+            <label for="block-full-immunization-2nd-qtr-input"
+                class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+                Status (2nd QTR) (%)
+            </label>
+            <p id="block-full-immunization-2nd-qtr-error" class="text-red-500 text-sm"></p>
+        </div>
+
+        <!-- Status 3rd Quarter Section -->
+        <div class="input-container">
+            <input type="number" id="block-full-immunization-3rd-qtr-input" min="0" max="100"
+                class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder=" ">
+            <label for="block-full-immunization-3rd-qtr-input"
+                class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+                Status (3rd QTR) (%)
+            </label>
+            <p id="block-full-immunization-3rd-qtr-error" class="text-red-500 text-sm"></p>
+        </div>
+
+        <!-- Status 4th Quarter Section -->
+        <div class="input-container">
+            <input type="number" id="block-full-immunization-4th-qtr-input" min="0" max="100"
+                class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder=" ">
+            <label for="block-full-immunization-4th-qtr-input"
+                class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+                Status (4th QTR) (%)
+            </label>
+            <p id="block-full-immunization-4th-qtr-error" class="text-red-500 text-sm"></p>
+        </div>
+    </div>
+</div>
+
+<!-- State level -->
+<div id="state-full-immunization-section" class="bg-white rounded-lg shadow-md p-6 mb-4">
+    <h3 class="text-xl font-semibold text-gray-700 mb-4">State Level</h3>
+    <div class="input-container">
+        <input type="number" id="state-full-immunization-input" min="0" max="100"
+            class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder=" ">
+        <label for="state-full-immunization-input"
+            class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+            State Average of (FY 22-23) (%)
+        </label>
+        <p id="state-full-immunization-error" class="text-red-500 text-sm"></p>
+    </div>
+</div>
+
+<!-- District level -->
+<div id="district-full-immunization-section" class="bg-white rounded-lg shadow-md p-6 mb-4">
+    <h3 class="text-xl font-semibold text-gray-700 mb-4">District Level</h3>
+    <div class="input-container">
+        <input type="number" id="district-full-immunization-input" min="0" max="100"
+            class="w-full p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder=" ">
+        <label for="district-full-immunization-input"
+            class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:text-sm peer-focus:text-gray-600">
+            District Average (FY 22-23) (%)
+        </label>
+        <p id="district-full-immunization-error" class="text-red-500 text-sm"></p>
+    </div>
+</div>
+
+            
+        </div>
+        <div class="flex justify-end mt-6">
+            <button type="button" id="saveNextButtonSection7"
+                class="bg-blue-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-600 transition duration-300"
+                >Save & Next</button>
+        </div>
+
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        // Shared validation function
+        function validateNumberInput(event) {
+            const input = event.target;
+            const min = 0;
+            const max = 100;
+            const errorId = `${input.id}_error`;
+            let errorElement = document.getElementById(errorId);
+
+            // Create an error element if it doesn't exist
+            if (!errorElement) {
+                errorElement = document.createElement("p");
+                errorElement.id = errorId;
+                errorElement.className = "text-red-500 text-sm mt-1";
+                input.parentElement.appendChild(errorElement);
+            }
+
+            // Validate the input value
+            if (input.value === "" || input.value < min || input.value > max || isNaN(input.value)) {
+                errorElement.textContent = `Value must be between ${min} and ${max}.`;
+                return false;
+            } else {
+                errorElement.textContent = "";
+                return true;
+            }
+        }
+
+        // Attach validation to all number inputs dynamically
+        const inputs = document.querySelectorAll('input[type="number"]');
+        inputs.forEach((input) => {
+            input.addEventListener("input", validateNumberInput);
+        });
+
+        // Save button functionality
+        document.getElementById("saveNextButtonSection7").addEventListener("click", () => {
+            let allValid = true;
+
+            // Validate all inputs
+            inputs.forEach((input) => {
+                if (!validateNumberInput({ target: input })) {
+                    allValid = false;
+                }
+            });
+
+            // Check if all fields are valid
+            if (allValid) {
+                alert("All inputs are valid. Saving data...");
+                // Perform save functionality here
+                console.log("Saving data...");
+            } else {
+                alert("Please correct errors in the form before saving.");
+            }
+        });
+    });
+</script>
+
+</body>
+
+</html>

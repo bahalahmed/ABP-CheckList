@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Programs with Modal</title>
+</head>
+
+<body class="bg-gray-100 font-sans">
+    <div class="container mx-auto p-4">
+        <form id="dataForm">
+            <!-- Header Section -->
+            <div id="section8" class="section bg-white p-6 rounded shadow-md mb-4">
+                <h2 class="text-3xl font-bold mb-6 text-black-600">Key Programmatic Issues</h2>
+                <p class="text-sm text-red-500 mb-4">* indicates a required question</p>
+
+                <!-- Reproductive, Maternal, Newborn, Child Health Section -->
+                <div id="RMNCHA-section" class="bg-white p-6 rounded-lg shadow-md mt-4">
+                    <h2 class="text-gray-700 text-lg font-semibold mb-6">Reproductive, Maternal, Newborn, Child Health
+                        and Adolescent Health & Nutrition (RMNCHA+N)</h2>
+                    <div class="mb-4">
+                        <div class="flex justify-between items-center">
+                            <button type="button" class="select-btn bg-blue-500 text-white px-4 py-2 rounded-lg text-sm"
+                                data-title="RMNCHA+N Infrastructure"
+                                data-options="Infrastructure (Facility structure),Supply and Demand (Pharmaceuticals and Laboratory),Fund Accessibility,Training,Logistics,Equipments,Human Resource"
+                                data-target="RMNCHA-selected-items">
+                                Select
+                            </button>
+                        </div>
+                        <div id="RMNCHA-selected-items" class="selected-items flex mt-2 flex-wrap gap-4 text-sm">
+                            <input type="hidden" name="RMNCHA-Selections" id="RMNCHA-Selections" value="">
+                        </div>
+                        <p id="error-RMNCHA" class="text-red-500 text-sm mt-1"></p>
+                    </div>
+                </div>
+
+                <div id="NTEP-section" class="bg-white p-6 rounded-lg shadow-md mt-4">
+                    <h2 class="text-gray-700 text-lg font-semibold mb-6">National Tuberculosis Elimination Programme
+                        (NTEP)</h2>
+                    <div class="mb-4">
+                        <div class="flex justify-between items-center">
+                            <button type="button" class="select-btn bg-blue-500 text-white px-4 py-2 rounded-lg text-sm"
+                                data-title="NTEP Infrastructure"
+                                data-options="Infrastructure (Facility structure),Supply and Demand (Pharmaceuticals and Laboratory),Fund Accessibility,Training,Logistics,Equipments,Human Resource"
+                                data-target="NTEP-selected-items">
+                                Select
+                            </button>
+                        </div>
+                        <div id="NTEP-selected-items" class="selected-items flex mt-2 flex-wrap gap-4 text-sm">
+                            <input type="hidden" name="NTEP-Selections" id="NTEP-Selections" value="">
+                        </div>
+                        <p id="error-NTEP" class="text-red-500 text-sm mt-1"></p>
+                    </div>
+                </div>
+
+                <div id="NCD-section" class="bg-white p-6 rounded-lg shadow-md mt-4">
+                    <h2 class="text-gray-700 text-lg font-semibold mb-6">Non Communicable Disease (NCD)</h2>
+                    <div class="mb-4">
+                        <div class="flex justify-between items-center">
+                            <button type="button" class="select-btn bg-blue-500 text-white px-4 py-2 rounded-lg text-sm"
+                                data-title="NCD Infrastructure"
+                                data-options="Infrastructure (Facility structure),Supply and Demand (Pharmaceuticals and Laboratory),Fund Accessibility,Training,Logistics,Equipments,Human Resource"
+                                data-target="NCD-selected-items">
+                                Select
+                            </button>
+                        </div>
+                        <div id="NCD-selected-items" class="selected-items flex mt-2 flex-wrap gap-4 text-sm">
+                            <input type="hidden" name="NCD-Selections" id="NCD-Selections" value="">
+                        </div>
+                        <p id="error-NCD" class="text-red-500 text-sm mt-1"></p>
+                    </div>
+                </div>
+
+                <div id="QualityAssurance-section" class="bg-white p-6 rounded-lg shadow-md mt-4">
+                    <h2 class="text-gray-700 text-lg font-semibold mb-6">Quality Assurance & Patient Safety</h2>
+                    <div class="mb-4">
+                        <div class="flex justify-between items-center">
+                            <button type="button" class="select-btn bg-blue-500 text-white px-4 py-2 rounded-lg text-sm"
+                                data-title="Quality Assurance & Patient Safety Infrastructure"
+                                data-options="Infrastructure (Facility structure),Supply and Demand (Pharmaceuticals and Laboratory),Fund Accessibility,Training,Logistics,Equipments,Human Resource"
+                                data-target="QualityAssurance-selected-items">
+                                Select
+                            </button>
+                        </div>
+                        <div id="QualityAssurance-selected-items"
+                            class="selected-items flex mt-2 flex-wrap gap-4 text-sm">
+                            <input type="hidden" name="QualityAssurance-Selections" id="QualityAssurance-Selections"
+                                value="">
+                        </div>
+                        <p id="error-QualityAssurance" class="text-red-500 text-sm mt-1"></p>
+                    </div>
+                </div>
+
+                <div id="CPHC-section" class="bg-white p-6 rounded-lg shadow-md mt-4">
+                    <h2 class="text-gray-700 text-lg font-semibold mb-6">Comprehensive Primary Healthcare (CPHC) through
+                        Ayushman Bharat Health & Wellness Centre</h2>
+                    <div class="mb-4">
+                        <div class="flex justify-between items-center">
+                            <button type="button" class="select-btn bg-blue-500 text-white px-4 py-2 rounded-lg text-sm"
+                                data-title="CPHC through Ayushman Bharat Health & Wellness Centre Infrastructure"
+                                data-options="Infrastructure (Facility structure),Supply and Demand (Pharmaceuticals and Laboratory),Fund Accessibility,Training,Logistics,Equipments,Human Resource"
+                                data-target="CPHC-selected-items">
+                                Select
+                            </button>
+                        </div>
+                        <div id="CPHC-selected-items" class="selected-items flex mt-2 flex-wrap gap-4 text-sm">
+                            <input type="hidden" name="CPHC-Selections" id="CPHC-Selections" value="">
+                        </div>
+                        <p id="error-CPHC" class="text-red-500 text-sm mt-1"></p>
+                    </div>
+                </div>
+
+                <div id="HSS-section" class="bg-white p-6 rounded-lg shadow-md mt-4">
+                    <h2 class="text-gray-700 text-lg font-semibold mb-6">Overall Health System Strengthening (HSS)
+                        through NHM including budget utilization</h2>
+                    <div class="mb-4">
+                        <div class="flex justify-between items-center">
+                            <button type="button" class="select-btn bg-blue-500 text-white px-4 py-2 rounded-lg text-sm"
+                                data-title="HSS through NHM including budget utilization Infrastructure"
+                                data-options="Infrastructure (Facility structure),Supply and Demand (Pharmaceuticals and Laboratory),Fund Accessibility,Training,Logistics,Equipments,Human Resource"
+                                data-target="HSS-selected-items">
+                                Select
+                            </button>
+                        </div>
+                        <div id="HSS-selected-items" class="selected-items flex mt-2 flex-wrap gap-4 text-sm">
+                            <input type="hidden" name="HSS-Selections" id="HSS-Selections" value="">
+                        </div>
+                        <p id="error-HSS" class="text-red-500 text-sm mt-1"></p>
+                    </div>
+                </div>
+
+                <div id="NVBDCP-section" class="bg-white p-6 rounded-lg shadow-md mt-4">
+                    <h2 class="text-gray-700 text-lg font-semibold mb-6">National Vector Borne Disease Control Programme
+                        (NVBDCP)</h2>
+                    <div class="mb-4">
+                        <div class="flex justify-between items-center">
+                            <button type="button" class="select-btn bg-blue-500 text-white px-4 py-2 rounded-lg text-sm"
+                                data-title="NVBDCP Infrastructure"
+                                data-options="Infrastructure (Facility structure),Supply and Demand (Pharmaceuticals and Laboratory),Fund Accessibility,Training,Logistics,Equipments,Human Resource"
+                                data-target="NVBDCP-selected-items">
+                                Select
+                            </button>
+                        </div>
+                        <div id="NVBDCP-selected-items" class="selected-items flex mt-2 flex-wrap gap-4 text-sm">
+                            <input type="hidden" name="NVBDCP-Selections" id="NVBDCP-Selections" value="">
+                        </div>
+                        <p id="error-NVBDCP" class="text-red-500 text-sm mt-1"></p>
+                    </div>
+                </div>
+
+                <div id="Immunization-section" class="bg-white p-6 rounded-lg shadow-md mt-4">
+                    <h2 class="text-gray-700 text-lg font-semibold mb-6">Immunization</h2>
+                    <div class="mb-4">
+                        <div class="flex justify-between items-center">
+                            <button type="button" class="select-btn bg-blue-500 text-white px-4 py-2 rounded-lg text-sm"
+                                data-title="Immunization Infrastructure"
+                                data-options="Infrastructure (Facility structure),Supply and Demand (Pharmaceuticals and Laboratory),Fund Accessibility,Training,Logistics,Equipments,Human Resource"
+                                data-target="Immunization-selected-items">
+                                Select
+                            </button>
+                        </div>
+                        <div id="Immunization-selected-items" class="selected-items flex mt-2 flex-wrap gap-4 text-sm">
+                            <input type="hidden" name="Immunization-Selections" id="Immunization-Selections" value="">
+                        </div>
+                        <p id="error-Immunization" class="text-red-500 text-sm mt-1"></p>
+                    </div>
+                </div>
+
+
+
+
+
+
+                <!-- Add similar sections for other programs here -->
+
+                <div class="flex justify-end mt-6">
+                    <button type="button" id="saveNextButton"
+                        class="bg-blue-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-600 transition duration-300 text-sm">Save
+                        & Next</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Modal for selection -->
+    <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex justify-center items-center">
+        <div class="bg-white p-6 rounded-lg w-96">
+            <h3 id="modalTitle" class="text-lg font-semibold mb-4"></h3>
+            <div id="modalOptions" class="flex flex-col gap-3"></div>
+            <div class="flex justify-between mt-4">
+                <button id="resetBtn" class="bg-gray-500 text-white py-2 px-4 rounded-lg text-sm">Reset</button>
+                <button id="saveBtn" class="bg-blue-500 text-white py-2 px-4 rounded-lg text-sm">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const saveNextButton = document.getElementById("saveNextButton");
+            const selectBtns = document.querySelectorAll(".select-btn");
+            const modal = document.getElementById("modal");
+            const modalTitle = document.getElementById("modalTitle");
+            const modalOptions = document.getElementById("modalOptions");
+            const saveBtn = document.getElementById("saveBtn");
+            const resetBtn = document.getElementById("resetBtn");
+            let currentSelectedContainer = null;
+            const selectedItemsStore = {};
+
+            function generateId(title) {
+                return title.replace(/[^a-zA-Z0-9-_]/g, "-");
+            }
+
+            selectBtns.forEach(button => {
+                button.addEventListener("click", function () {
+                    const title = this.getAttribute("data-title");
+                    const options = this.getAttribute("data-options");
+                    currentSelectedContainer = document.querySelector(`#${this.getAttribute("data-target")}`);
+                    const previouslySelected = selectedItemsStore[title] || [];
+
+                    modalTitle.textContent = title;
+                    modalOptions.innerHTML = createCheckboxes(options, previouslySelected);
+
+                    modal.classList.remove("hidden");
+                });
+            });
+
+            saveBtn.addEventListener("click", function () {
+                const selectedCheckboxes = Array.from(modalOptions.querySelectorAll("input:checked"));
+                const selectedValues = selectedCheckboxes.map(checkbox => checkbox.value);
+
+                if (selectedValues.length > 3) {
+                    alert("You can select a maximum of 3 options.");
+                    return;
+                }
+
+                if (selectedValues.length === 0) {
+                    alert("Please select at least one option.");
+                    return;
+                }
+
+                selectedItemsStore[modalTitle.textContent] = selectedValues;
+
+                currentSelectedContainer.innerHTML = selectedValues.map(item => `
+            <span class="px-2 py-1 bg-gray-300 rounded text-sm">
+                ${item} <span class="cursor-pointer" onclick="removeItem(this)">×</span>
+            </span>`).join("");
+
+                // Check if the hidden input exists; if not, create it
+                let inputField = currentSelectedContainer.querySelector("input[type='hidden']");
+                if (!inputField) {
+                    inputField = document.createElement("input");
+                    inputField.type = "hidden";
+                    inputField.name = modalTitle.textContent.replace(/\s+/g, "-") + "-Selections";
+                    currentSelectedContainer.appendChild(inputField);
+                }
+
+                inputField.value = selectedValues.join(", ");
+                  // Remove the error message and error border dynamically
+        const errorElement = currentSelectedContainer.nextElementSibling;
+        if (errorElement) {
+            errorElement.textContent = "";
+        }
+        currentSelectedContainer.classList.remove("border", "border-red-500");
+
+        modal.classList.add("hidden");
+
+                // Remove the error message dynamically
+                 const errorElement1 = currentSelectedContainer.nextElementSibling;
+                if (errorElement1) {
+                    errorElement.textContent = "";
+                }
+
+                modal.classList.add("hidden");
+            });
+
+            resetBtn.addEventListener("click", function () {
+                modalOptions.querySelectorAll("input").forEach(input => input.checked = false);
+            });
+
+            saveNextButton.addEventListener("click", function () {
+                const allSections = document.querySelectorAll(".selected-items");
+                let isValid = true;
+
+                allSections.forEach(section => {
+                    const errorElement = section.nextElementSibling;
+                    const inputField = section.querySelector("input[type='hidden']");
+
+                    if (!inputField.value) {
+                        isValid = false;
+                        errorElement.textContent = "Please select at least one option.";
+                        section.classList.add("border", "border-red-500");
+                    } else {
+                        errorElement.textContent = "";
+                        section.classList.remove("border", "border-red-500");
+                    }
+                });
+
+                if (!isValid) {
+                    alert("Please complete all required fields before proceeding.");
+                    return;
+                }
+
+                alert("Form submitted successfully!");
+            });
+
+            function createCheckboxes(options, previouslySelected) {
+                const optionsList = options.split(",");
+                return optionsList.map(option => {
+                    const checked = previouslySelected.includes(option.trim()) ? "checked" : "";
+                    return `
+                <label class="flex items-center text-sm">
+                    <input type="checkbox" value="${option.trim()}" ${checked} class="mr-2 dynamic-checkbox">
+                    ${option.trim()}
+                </label>`;
+                }).join("");
+            }
+
+            // Dynamically remove error when selecting options
+            modalOptions.addEventListener("change", function (e) {
+                if (e.target.classList.contains("dynamic-checkbox")) {
+                    const errorElement = currentSelectedContainer.nextElementSibling;
+                    if (errorElement) {
+                        errorElement.textContent = "";
+                    }
+                }
+            });
+
+            window.removeItem = function (item) {
+                const span = item.parentElement;
+                const container = span.parentElement;
+                const inputField = container.querySelector("input[type='hidden']");
+
+                const title = container.previousElementSibling.textContent.trim();
+                const valueToRemove = span.textContent.trim().replace("×", "").trim();
+
+                if (selectedItemsStore[title]) {
+                    selectedItemsStore[title] = selectedItemsStore[title].filter(value => value !== valueToRemove);
+                    inputField.value = selectedItemsStore[title].join(", ");
+                }
+
+                span.remove();
+            };
+        });
+
+
+    </script>
+</body>
+
+</html>
